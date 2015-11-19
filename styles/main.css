@@ -1,3 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: #ffdead;
+  font-family: Tahoma, Helvetica, sans-serif; }
 
+#container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 10%; }
 
 /*# sourceMappingURL=main.css.map */
