@@ -1,0 +1,17 @@
+$navbar: #000;
+$background: #ffdead;
+
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-color: $background;
+	font-family: Tahoma, Helvetica, sans-serif;
+}
+
+#container {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 10%;
+}
