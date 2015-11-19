@@ -1,15 +1,16 @@
 define(["q", "jquery"], function(Q, $) {
+  
   return function(newUser) {
     var deferred = Q.defer();
 
-    $.ajax({ url: "https://originalidea.firebaseio.com/" + newUser + "/.json",
+    $.ajax({ url: "https://originalidea.firebaseio.com/userprofiles.json",
         method: "POST",
         data: JSON.stringify(newUser) })
       // XHR was successful
-      .done(function(json_data) {
+      .done(function(newUser) {
         // Now we can resolve the promise and send the data
-        console.log("got data", json_data);
-        deferred.resolve(json_data);
+        console.log("got data", newUser);
+        deferred.resolve(newUser);
       })
       // XHR failed for some reason
       .fail(function(xhr, status, error) {
