@@ -13,17 +13,19 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
       console.log("findMovie lowercase and replace", correctedMovie);
 
 // put findMovie into ajax call to omdb ?     
-      omdbAjax(correctedMovie).then(function () {
+      omdbAjax(correctedMovie).then(function (movie) {
 
 // handlebars ?     
+      console.log("movie", movie);
 
-        
+      require(['hbs!../templates/omdb-movie-results'], function (songTemplate) {
+        $("#home-page .row").html(songTemplate(movie));
       });
 
 
     });
 
-
+});
 
   }; //--end return  
 }); //--end define
