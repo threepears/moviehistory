@@ -1,4 +1,4 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "add-user"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, addUser) {
 
 	
 	var email;
@@ -12,7 +12,12 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		console.log("register email", email);
 		password = $("#password").val();
 		console.log("register password", password);
-		registerPromise(email, password);
+		thisUser.email = email;
+		thisUser.password = password;
+		console.log(thisUser);
+		registerPromise(email, password, thisUser);
+		// addUser(thisUser);
+
 	});
 
 	login.click(function() {

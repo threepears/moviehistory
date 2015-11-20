@@ -1,8 +1,9 @@
-define(["q", "jquery"], function(Q, $) {
+define(["q", "jquery", "firebase"], function(Q, $, firebase) {
   
-  return function (email, password) {
+  return function (email, password, thisUser) {
 
-    var ref = new Firebase("https://originalidea.firebaseio.com");
+    console.log("email", email, "password", password, thisUser);
+    var ref = new Firebase("https://originalidea.firebaseio.com/");
     ref.createUser({
       email: email,
       password: password
@@ -10,16 +11,19 @@ define(["q", "jquery"], function(Q, $) {
       if (error) {
         switch (error.code) {
           case "EMAIL_TAKEN":
-            console.log("The new user account cannot be created because the email is already in use.");
+            alert("The new user account cannot be created because the email is already in use.");
             break;
           case "INVALID_EMAIL":
-            console.log("The specified email is not a valid email.");
+            alert("The specified email is not a valid email.");
             break;
           default:
-            console.log("Error creating user:", error);
+            alert("Error creating user:", error);
         }
       } else {
         console.log("Successfully created user account with uid:", userData.uid);
+        $.ajax({ url: "https://originalidea.firebaseio.com/userprofiles.json",
+        method: "POST",
+        data: JSON.stringify(thisUser) });
       }
     });
   };

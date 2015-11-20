@@ -1,6 +1,6 @@
 define(["q", "jquery", "firebase"], function(Q, $, firebase) {
 
-  return function(email, password) {
+  return function (email, password) {
     
     var deferred = Q.defer();
 
@@ -12,7 +12,9 @@ define(["q", "jquery", "firebase"], function(Q, $, firebase) {
       }, function(error, authData) {
         if (error) {
           console.log("Login Failed!", error);
-        } else { deferred.resolve(authData); }
+        } else { 
+          console.log("authData", authData);
+          deferred.resolve(authData); }
     });
 
     return deferred.promise;
