@@ -11,11 +11,12 @@
 
 	<body>
 
-		<div id="container">
+		<!-- HOME PAGE -->
 
-			<!-- HOME PAGE -->
+		<section id="entry-screen" class="page">
 
-			<section id="entry-screen" class="page">
+			<div class="container">
+
 				<h1 id="homeTitle">COMPANY LOGO</h1>
 
 				<div id="home-page">
@@ -33,33 +34,43 @@
 				    </div>
 
 				</div>
-			</section> <!-- Close of home page -->
+			</section> 
+		</div> <!-- Close of home page -->
 
-			<!-- MAIN PAGE -->
+		<!-- MAIN PAGE -->
 
-<!-- 			<section class="main-page page">
-				<h1 id="homeTitle">COMPANY LOGO</h1>
+		<section class="main-page page">
+
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <a class="navbar-brand" href="#">
+			        <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
+			      </a>
+			    </div>
+			    <div id="buttons">
+			        <button type="submit" id="findMovies" class="btn btn-danger">Find Movies</button>
+			        <button type="submit" id="searchMyMovies" class="btn btn-danger">Search My Movies</button>
+		    	</div>
+			    <div class="nav navbar-nav navbar-right">Logout</div>
+			  </div>
+			</nav>
+
+			<div class="container">
 
 				<div id="home-page">
 					  
-				    <div id="content">
-				      <input class="middle form-control" type="text" id="email" placeholder="Enter Email">
-				      
-				      <input class="middle form-control" type="password" id="password" placeholder="Enter Password"> -->
-
-				      <!-- Login
-				      <button class="middle page-turn btn btn-default" type="button" id="login" next="profile-page">Login</button> -->
-
-				      <!-- Signup -->
-<!-- 				      <button class="middle page-turn btn btn-default" type="button" id="signupButton" next="sign-up">Register</button>
-				    </div>
+				    <div class="row">
+					  <div class="col-md-4">.col-md-4</div>
+					  <div class="col-md-4">.col-md-4</div>
+					  <div class="col-md-4">.col-md-4</div>
+					</div>
 
 				</div>
-			</section>  --> <!-- Close of home page -->
-
-
+			</section>  <!-- Close of home page -->
 
 		</div>
+
 
 	<script data-main="javascripts/entry" src="lib/bower_components/requirejs/require.js"></script>
 

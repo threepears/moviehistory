@@ -5,10 +5,24 @@ body {
   background-color: #ffdead;
   font-family: Tahoma, Helvetica, sans-serif; }
 
-#container {
+.container {
   width: 80%;
   margin: 0 auto;
   text-align: center;
   margin-top: 10%; }
+
+.navbar-default {
+  background-color: #000;
+  color: #fff; }
+
+.glyphicon {
+  color: #fff; }
+
+#buttons {
+  padding: 5px; }
+
+.col-md-4 {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000; }
 
 /*# sourceMappingURL=main.css.map */
