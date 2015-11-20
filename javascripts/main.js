@@ -1,4 +1,4 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch) {
 
 	
 	var email;
@@ -29,7 +29,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 	});
 
 
-
+omdbSearch();
 
 	$(".page").hide();
     $("#entry-screen").show();
