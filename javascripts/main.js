@@ -12,11 +12,6 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		console.log("register email", email);
 		password = $("#password").val();
 		console.log("register password", password);
-
-		// thisUser.email = email;
-		// thisUser.password = password;
-
-		// registerPromise(thisUser);
 		registerPromise(email, password);
 	});
 
@@ -25,7 +20,6 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		console.log("login email", email);
 		password = $("#password").val();
 		console.log("login password", password);
-
 		loginPromise(email, password);
 	});
 
