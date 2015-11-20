@@ -9,21 +9,22 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 
 	register.click(function() {
 		email = $("#email").val();
-		console.log(email);
+		console.log("register email", email);
 		password = $("#password").val();
-		console.log(password);
+		console.log("register password", password);
 
-		thisUser.email = email;
-		thisUser.password = password;
+		// thisUser.email = email;
+		// thisUser.password = password;
 
-		registerPromise(thisUser);
+		// registerPromise(thisUser);
+		registerPromise(email, password);
 	});
 
 	login.click(function() {
 		email = $("#email").val();
-		console.log(email);
+		console.log("login email", email);
 		password = $("#password").val();
-		console.log(password);
+		console.log("login password", password);
 
 		loginPromise(email, password);
 	});
