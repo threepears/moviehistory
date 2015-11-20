@@ -21,12 +21,24 @@ body {
 	color: #fff;
 }
 
+.navbar-left {
+	width: 50%;
+}
+
+.navbar-right {
+	padding: 15px 15px 10px;
+}
+
 .glyphicon {
 	color: #fff;
 }
 
 #buttons {
-	padding: 5px;
+	padding: 10px;
+}
+ 
+button {
+	margin: 0 10px;
 }
 
 .col-md-4 {
