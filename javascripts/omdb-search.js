@@ -18,6 +18,14 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
 // handlebars ?     
       console.log("movie", movie);
 
+
+// i want to loop over the movies and remove any that don't have Type: "movie"
+      movie.forEach(function () {
+        if (Type !== "movie") {
+
+        }
+      });
+
       require(['hbs!../templates/omdb-movie-results'], function (songTemplate) {
         $("#home-page .row").html(songTemplate(movie));
       });
