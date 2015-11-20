@@ -2,6 +2,8 @@ define(["q", "jquery", "bootstrap"], function(Q, $) {
   return function(title) {
     var deferred = Q.defer();
 
+    console.log("http://www.omdbapi.com/?s=" + title);
+
     $.ajax({ url: "http://www.omdbapi.com/?s=" + title,
       method: "GET",
       // data: JSON.stringify(title)
