@@ -13,10 +13,10 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		password = $("#password").val();
 		console.log(password);
 
-		thisUser.email = email;
-		thisUser.password = password;
+		/*thisUser.email = email;
+		thisUser.password = password;*/
 
-		registerPromise(thisUser);
+		registerPromise(email,password);
 	});
 
 	login.click(function() {
