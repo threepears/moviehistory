@@ -11,15 +11,22 @@ body {
   text-align: center;
   margin-top: 10%; }
 
+.navbar {
+  border-radius: 0px; }
+
 .navbar-default {
   background-color: #000;
-  color: #fff; }
+  color: #fff;
+  border: none; }
 
 .navbar-left {
   width: 50%; }
 
 .navbar-right {
   padding: 15px 15px 10px; }
+
+.navbar-form .form-control {
+  width: 100%; }
 
 .glyphicon {
   color: #fff; }
@@ -34,9 +41,6 @@ div.modal-body {
   background-color: #ffdead; }
 
 div.form-group {
-  width: 100%; }
-
-.navbar-form .form-control {
   width: 100%; }
 
 .col-md-4 {
