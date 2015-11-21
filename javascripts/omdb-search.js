@@ -1,4 +1,4 @@
-define(["jquery", "omdb-ajax"], function($, omdbAjax) {
+define(["jquery", "omdb-ajax", "omdb-img-ajax"], function($, omdbAjax, omdbImgAjax) {
   return function() {
 
 // click find button in Find Movies Modal
@@ -20,11 +20,6 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
 
 
 // i want to loop over the movies and remove any that don't have Type: "movie"
-      movie.forEach(function () {
-        if (Type !== "movie") {
-
-        }
-      });
 
       require(['hbs!../templates/omdb-movie-results'], function (songTemplate) {
         $("#home-page .row").html(songTemplate(movie));

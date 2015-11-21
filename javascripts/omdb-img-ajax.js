@@ -1,24 +1,20 @@
-define(["q", "jquery", "bootstrap"], function(Q, $) {
-  return function(title) {
+define(["q", "jquery"], function(Q, $) {
+  return function(imdbID) {
+
     var deferred = Q.defer();
 
-    console.log("http://www.omdbapi.com/?s=" + title);
-
-    $.ajax({ url: "http://www.omdbapi.com/?s=" + title + "&type=movie",
-      method: "GET",
-      // data: JSON.stringify(title)
-    })
+    $.ajax({ url: "http://img.omdbapi.com/?i=" + imdbID + "&apikey=7c212437"})
       // XHR was successful
       .done(function(json_data) {
         // Now we can resolve the promise and send the data
         deferred.resolve(json_data);
-        console.log("omdb json_data", json_data);
+        console.log("book types json_data", json_data);
       })
       // XHR failed for some reason
       .fail(function(xhr, status, error) {
         // Since the call failed, we have to reject the promise
         deferred.reject(error);
-        // $("#add-failure").modal('show');
+        console.log("error", error);
       });
 
     return deferred.promise;
