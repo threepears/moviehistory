@@ -30,9 +30,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 
 
 
-
-	$(".page").hide();
-    $("#entry-screen").show();
+	$("#entry-screen").show();
     
     $(".page-turn").click(function(e) {
       var nextPage = $(this).attr("next");
@@ -41,6 +39,15 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
       $("." + nextPage).show();
 
     });
+
+
+    // Enter
+	$(document).keyup(function (e) {
+	    var key = e.which || e.keyCode;
+	    	if (key === 13) {
+	        login.click();
+	      }
+	});
 
 
 

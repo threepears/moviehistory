@@ -31,6 +31,10 @@ body {
 .glyphicon {
   color: #fff; }
 
+.navbar-brand:hover,
+.navbar-brand:focus {
+  cursor: default; }
+
 #buttons {
   padding: 10px; }
 
