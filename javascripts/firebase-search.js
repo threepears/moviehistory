@@ -15,6 +15,21 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
       var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/");
       console.log("ref", ref);
 
+      ref.child(uid).on("value", function(snapshot) {
+
+// Store the entire user key in a local variable
+        var userRef = snapshot.val();
+        console.log("inside userRef", userRef);
+
+
+        require(['hbs!../templates/firebase-movie-results'], function (songTemplate) {
+          $("#home-page .row").html(songTemplate({movies:userRef}));
+        });
+
+      });
+
+
+
 // // put findMovie into ajax call to omdb ?     
 //       omdbAjax(correctedMovie).then(function (movie) {
 
