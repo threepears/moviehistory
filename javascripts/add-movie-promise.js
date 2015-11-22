@@ -1,10 +1,13 @@
 define(["q", "jquery"], function(Q, $) {
-  return function(uid, imdb) {
+  return function(uid, imdbObject) {
     var deferred = Q.defer();
+
+    imdbObject.watched = "false";
+    imdbObject.rating = 0;
 
     $.ajax({ url: "https://originalidea.firebaseio.com/userprofiles/" + uid + "/.json",
         method: "POST",
-        data: JSON.stringify(imdb) })
+        data: JSON.stringify(imdbObject) })
       // XHR was successful
       .done(function(json_data) {
         // Now we can resolve the promise and send the data
