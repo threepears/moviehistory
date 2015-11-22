@@ -1,10 +1,10 @@
-define(["q", "jquery", "bootstrap", "lodash"], function(Q, $, _) {
-  return function(title) {
+define(["q", "jquery", "bootstrap", "add-movie-promise"], function(Q, $, addMoviePromise) {
+  return function(imdbID) {
     var deferred = Q.defer();
 
-    console.log("http://www.omdbapi.com/?s=" + title);
+    console.log("http://www.omdbapi.com/?i=" + imdbID);
 
-    $.ajax({ url: "http://www.omdbapi.com/?s=" + title + "&type=movie",
+    $.ajax({ url: "http://www.omdbapi.com/?i=" + imdbID + "&type=movie",
       method: "GET",
       // data: JSON.stringify(title)
     })
