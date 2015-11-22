@@ -1,4 +1,4 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch) {
 
 	
 	var email;
@@ -33,6 +33,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 			console.log("loginPromise then statement", uid);
 // javascripts/add-movie.js
 			addMovie(uid);
+			firebaseSearch(uid);
 			// return uid;
 		});
 
