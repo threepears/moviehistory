@@ -2,7 +2,7 @@ define(["q", "jquery"], function(Q, $) {
   return function(uid, imdb) {
     var deferred = Q.defer();
 
-    $.ajax({ url: "https://originalidea.firebaseio.com/userprofiles/" + uid + "/" + imdb + ".json",
+    $.ajax({ url: "https://originalidea.firebaseio.com/userprofiles/" + uid + "/.json",
         method: "POST",
         data: JSON.stringify(imdb) })
       // XHR was successful
