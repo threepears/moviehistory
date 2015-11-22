@@ -2,6 +2,7 @@ define(["q", "jquery"], function(Q, $) {
   return function(email) {
     var deferred = Q.defer();
 
+// creates user with uid with their email underneath
     $.ajax({ url: "https://originalidea.firebaseio.com/userprofiles.json",
         method: "POST",
         data: JSON.stringify(email) })

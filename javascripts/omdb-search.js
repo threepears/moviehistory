@@ -12,7 +12,7 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
       var correctedMovie = findMovie.toLowerCase().replace(/ /g, "+");
       console.log("findMovie lowercase and replace", correctedMovie);
 
-// put findMovie into ajax call to omdb ?     
+// put correctedMovie into javascripts/omdb-ajax.js then returns that promise to handlebars to write the responses
       omdbAjax(correctedMovie).then(function (movie) {
 
       console.log("movie", movie);

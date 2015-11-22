@@ -1,5 +1,6 @@
 define(["q", "jquery", "firebase"], function(Q, $, firebase) {
 
+// logs in user
   return function(email, password) {
     
     var deferred = Q.defer();

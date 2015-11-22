@@ -1,3 +1,5 @@
+// i believe this is deprecated
+
 define(["jquery", "q", "firebase"], function($, Q, firebase) {
 
 	return {
