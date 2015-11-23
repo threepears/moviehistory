@@ -42,7 +42,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 // search omdb with javascripts/omdb-search.js
 omdbSearch();
 
-	$(".page").hide();
+
     $("#entry-screen").show();
     
     $(".page-turn").click(function(e) {
@@ -51,6 +51,14 @@ omdbSearch();
       $(".page").hide();
       $("." + nextPage).show();
 
+    });
+
+    // Enter
+    $(document).keyup(function (e) {
+        var key = e.which || e.keyCode;
+            if (key === 13) {
+            login.click();
+          }
     });
 
 
