@@ -2,9 +2,11 @@ define(["q", "jquery"], function(Q, $) {
   return function(uid, imdbObject) {
     var deferred = Q.defer();
 
+// adds keys/values onto object from omdb before putting the object under the uid of the user in firebase
     imdbObject.watched = "false";
     imdbObject.rating = 0;
 
+// adds in imdbObject to userprofiles/uid/movies creates a random key
     $.ajax({ url: "https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies/.json",
         method: "POST",
         data: JSON.stringify(imdbObject) })

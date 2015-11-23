@@ -1,5 +1,6 @@
 define(["q", "jquery"], function(Q, $) {
-  
+ 
+// register new user. does not log them in  
   return function(email, password) {
     var deferred = Q.defer();
 
