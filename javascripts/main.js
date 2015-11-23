@@ -1,4 +1,4 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch) {
 
 	
 	var email;
@@ -6,6 +6,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 	var login = $("#login");
 	var register = $("#register");
 	var thisUser = {};
+	var uid;
 
 	register.click(function() {
 		email = $("#email").val();
@@ -25,7 +26,14 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		password = $("#password").val();
 		console.log(password);
 
-		loginPromise(email, password);
+		loginPromise(email, password).then(function (authData) {
+			uid = authData.uid;
+			console.log("loginPromise then statement", uid);
+			addMovie(uid);
+			firebaseSearch(uid);
+			// return uid;
+		});
+
 	});
 
 

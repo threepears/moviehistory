@@ -1,37 +1,18 @@
-define(["q", "jquery", "bootstrap", "lodash"], function(Q, $, _) {
-  return function(title) {
+define(["q", "jquery", "bootstrap", "add-movie-promise"], function(Q, $, addMoviePromise) {
+  return function(imdbID) {
     var deferred = Q.defer();
 
-    console.log("http://www.omdbapi.com/?s=" + title + "&type=movie");
+    console.log("http://www.omdbapi.com/?i=" + imdbID);
 
-    $.ajax({ url: "http://www.omdbapi.com/?s=" + title + "&type=movie",
+    $.ajax({ url: "http://www.omdbapi.com/?i=" + imdbID + "&type=movie",
       method: "GET",
       // data: JSON.stringify(title)
     })
       // XHR was successful
       .done(function(json_data) {
         // Now we can resolve the promise and send the data
-
-
-
-        // var test = json_data.Search;
-        
-        // for (var i = 0; i < test.length; i++) {
-        //   if ([i].Poster.value() === "N/A") {
-        //     test.splice(i, i + 1);
-        //   }
-        // }
-
-        // console.log("test", test);
         deferred.resolve(json_data);
-        // deferred.resolve({Search: test});
         console.log("omdb json_data", json_data);
-
-
-
-
-
-
       })
       // XHR failed for some reason
       .fail(function(xhr, status, error) {

@@ -15,7 +15,6 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
 // put findMovie into ajax call to omdb ?     
       omdbAjax(correctedMovie).then(function (movie) {
 
-// handlebars ?     
       console.log("movie", movie);
 
 /*      for (var key in movie) {
@@ -26,12 +25,10 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
         }
       }*/
 
-      // for (var key in movie) {
-      //   console.log(movie[key]);
-      //   for (var i in key) {
-      //     console.log(i);
-      //   }
-      // }
+      for (var key in movie) {
+        console.log(movie.Search);
+    
+      }
 
       console.log(Object.keys(movie));
 
