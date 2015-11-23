@@ -25,7 +25,8 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
 // currently this also writes the email address that is stored at the same level as the movies.
 // that could be fixed or changed several ways i'm sure
         require(['hbs!../templates/firebase-movie-results'], function (songTemplate) {
-          $("#home-page .row").html(songTemplate({movies:userRef}));
+          // $("#home-page .row").html(songTemplate({movies:userRef}));
+          $("#home-page .row").html(songTemplate(userRef));
         });
       });
 
