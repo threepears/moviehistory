@@ -18,13 +18,23 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
 // handlebars ?     
       console.log("movie", movie);
 
-
-// i want to loop over the movies and remove any that don't have Type: "movie"
-      movie.forEach(function () {
-        if (Type !== "movie") {
-
+/*      for (var key in movie) {
+        if(users[key].email === authData.password.email){
+          signedInUserProfile = users[key];
+        } else {
+          otherUsers.push(users[key]);
         }
-      });
+      }*/
+
+      // for (var key in movie) {
+      //   console.log(movie[key]);
+      //   for (var i in key) {
+      //     console.log(i);
+      //   }
+      // }
+
+      console.log(Object.keys(movie));
+
 
       require(['hbs!../templates/omdb-movie-results'], function (songTemplate) {
         $("#home-page .row").html(songTemplate(movie));

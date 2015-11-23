@@ -2,9 +2,9 @@ define(["q", "jquery", "bootstrap"], function(Q, $) {
   return function(title) {
     var deferred = Q.defer();
 
-    console.log("http://www.omdbapi.com/?s=" + title);
+    console.log("http://www.omdbapi.com/?s=" + title + "&type=movie");
 
-    $.ajax({ url: "http://www.omdbapi.com/?s=" + title,
+    $.ajax({ url: "http://www.omdbapi.com/?s=" + title + "&type=movie",
       method: "GET",
       // data: JSON.stringify(title)
     })
