@@ -2,17 +2,30 @@ body {
   margin: 0;
   padding: 0;
   border: 0;
-  background-color: #ffdead;
+  background-color: #6495ED;
   font-family: Tahoma, Helvetica, sans-serif; }
 
 h1 {
-  margin-top: 10%; }
+  margin: 0 0 1%;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  text-shadow: 0 5px 8px #1859ce;
+  font-size: 20em; }
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  margin: -40px 0 10%; }
 
 .container {
   width: 80%;
   margin: 0 auto;
   text-align: center;
   margin-top: 5%; }
+
+#content input {
+  margin: 0 auto 20px;
+  width: 50%; }
 
 .navbar {
   border-radius: 0px; }
@@ -40,6 +53,9 @@ h1 {
 button {
   margin: 0 10px; }
 
+#searchSubmit {
+  display: none; }
+
 #logout {
   display: inline-block; }
 
@@ -52,7 +68,7 @@ button {
   margin-right: 15px; }
 
 div.modal-body {
-  background-color: #ffdead; }
+  background-color: #6495ED; }
 
 div.form-group {
   width: 100%; }

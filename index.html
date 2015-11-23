@@ -7,6 +7,7 @@
 
 	  <link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
 	  <link rel="stylesheet" type="text/css" href="styles/main.css">
+	  <link href='https://fonts.googleapis.com/css?family=Roboto:900' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body>
@@ -17,7 +18,8 @@
 
 			<div class="container">
 
-				<h1 id="homeTitle">COMPANY LOGO</h1>
+				<h1 id="homeTitle">oi</h1>
+				<h3>MOVIE DATABASE</h3>
 
 				<div id="home-page">
 					  
@@ -27,10 +29,10 @@
 				      <input class="middle form-control" type="password" id="password" placeholder="Enter Password">
 
 				      <!-- Login -->
-				      <button class="middle page-turn btn btn-default" type="button" id="login" next="main-page">Login</button>
+				      <button class="middle page-turn btn btn-primary btn-lg" type="button" id="login" next="main-page">Login</button>
 
 				      <!-- Signup -->
-				      <button class="middle page-turn btn btn-default" type="button" id="register" next="main-page">Register</button>
+				      <button class="middle page-turn btn btn-primary btn-lg" type="button" id="register" next="main-page">Register</button>
 				    </div>
 
 				</div>
@@ -47,10 +49,13 @@
 			      <a class="navbar-brand" href="#">
 			        <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
 			      </a>
-			      <div id="buttons">
-			        <button type="submit" id="findMovies" class="btn btn-danger" data-toggle="modal" data-target="#findMoviesModal">Find Movies</button>
-			        <button type="submit" id="searchMyMovies" class="btn btn-danger" data-toggle="modal" data-target="#myMoviesModal">Search My Movies</button>
-		    	  </div>
+			      <span class="navbar-form navbar-left" role="search">
+				    <div class="form-group">
+				      <input type="text" class="form-control" placeholder="Search Movies..." id=
+				     "search">
+				    </div>
+				    <button type="button" class="btn btn-default" id="searchSubmit">Submit</button>
+				  </span>
 			    </div>
 			    
 			    <div class="nav navbar-nav navbar-right">
@@ -60,10 +65,6 @@
 			  </div>
 			</nav>
 
-			<!-- Button trigger modal -->
-<!-- 			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-			  Launch demo modal
-			</button> -->
 
 			<!-- Find Movies Modal -->
 			<div class="modal fade" id="findMoviesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

@@ -2,12 +2,12 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
   return function() {
 
 // click find button in Find Movies Modal
-    $("#findButton").click(function () {
+    $("#searchSubmit").click(function () {
 
       $("#home-page .row").html("");
 
 // findMovie is set to value of input field
-      var findMovie = $("#find").val();
+      var findMovie = $("#search").val();
       console.log("findmovie initial", findMovie);
 
 // replace spaces in findMovie and set to lowercase

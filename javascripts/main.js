@@ -1,4 +1,4 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "logout"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, logoutPromise) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch) {
 
 	
 	var email;
@@ -6,6 +6,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 	var login = $("#login");
 	var logout = $("#logout");
 	var register = $("#register");
+	var searching = $("#searchSubmit");
 	var thisUser = {};
 	var uid;
 
@@ -66,7 +67,9 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
     $(document).keyup(function (e) {
         var key = e.which || e.keyCode;
             if (key === 13) {
-            login.click();
+            searching.click();
+            /*e.preventDefault();*/
+/*            omdbSearch();*/
           }
     });
 
