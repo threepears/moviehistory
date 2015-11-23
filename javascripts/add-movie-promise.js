@@ -5,7 +5,7 @@ define(["q", "jquery"], function(Q, $) {
     imdbObject.watched = "false";
     imdbObject.rating = 0;
 
-    $.ajax({ url: "https://originalidea.firebaseio.com/userprofiles/" + uid + "/.json",
+    $.ajax({ url: "https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies/.json",
         method: "POST",
         data: JSON.stringify(imdbObject) })
       // XHR was successful
