@@ -6,7 +6,7 @@ define(["q", "jquery", "bootstrap", "lodash"], function(Q, $, _) {
 
 // passes in title from Find Movies input to search for multiple titles
     $.ajax({ url: "http://www.omdbapi.com/?s=" + title + "&type=movie",
-      method: "GET",
+      method: "GET"
       // data: JSON.stringify(title)
     })
       // XHR was successful

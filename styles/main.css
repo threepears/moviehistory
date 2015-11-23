@@ -23,9 +23,23 @@ h3 {
   text-align: center;
   margin-top: 5%; }
 
+.container-fluid {
+  padding-left: 20px; }
+
 #content input {
   margin: 0 auto 20px;
-  width: 50%; }
+  width: 50%;
+  font-size: 2em; }
+
+.form-control {
+  height: auto; }
+
+.row {
+  box-shadow: inset 0 0 20px #1859ce;
+  border-radius: 10px;
+  margin-top: 30px;
+  padding-top: 40px;
+  min-height: 500px; }
 
 .navbar {
   border-radius: 0px; }
@@ -52,6 +66,18 @@ h3 {
 
 button {
   margin: 0 10px; }
+
+#topchoices {
+  text-align: left; }
+
+#topchoices h3 {
+  display: inline-block;
+  margin: 0 20px 0 0;
+  font-size: 2.4em;
+  vertical-align: bottom; }
+
+#topchoices button {
+  margin: 0; }
 
 #searchSubmit {
   display: none; }
