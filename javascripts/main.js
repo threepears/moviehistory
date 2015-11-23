@@ -1,9 +1,10 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "logout"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, logoutPromise) {
 
 	
 	var email;
 	var password;
 	var login = $("#login");
+	var logout = $("#logout");
 	var register = $("#register");
 	var thisUser = {};
 	var uid;
@@ -31,6 +32,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		loginPromise(email, password).then(function (authData) {
 			uid = authData.uid;
 			console.log("loginPromise then statement", uid);
+			$("#greeting").html("Hello User!");
 // javascripts/add-movie.js
 			addMovie(uid);
 			firebaseSearch(uid);
@@ -39,8 +41,9 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 
 	});
 
-// search omdb with javascripts/omdb-search.js
-omdbSearch();
+
+	// search omdb with javascripts/omdb-search.js
+	omdbSearch();
 
 
     $("#entry-screen").show();
@@ -65,6 +68,14 @@ omdbSearch();
             if (key === 13) {
             login.click();
           }
+    });
+
+
+    logout.click(function() {
+    	var ref = new Firebase("https://originalidea.firebaseio.com");
+
+    	ref.unauth();
+    	location.reload();
     });
 
 
