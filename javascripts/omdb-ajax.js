@@ -11,10 +11,21 @@ define(["q", "jquery", "bootstrap", "lodash"], function(Q, $, _) {
     })
       // XHR was successful
       .done(function(json_data) {
-        // Now we can resolve the promise and send the data
-        deferred.resolve(json_data);
-        // deferred.resolve({Search: test});
         console.log("omdb json_data", json_data);
+        console.log(json_data.Search.length);
+/*        var newList = [];
+
+        for (var i = 0; i < json_data.Search.length; i++) {
+          if (json_data.Search[i].Poster !== "N/A") {
+            newList.push(json_data.Search[i]);
+          }
+        }
+
+        console.log(newList);*/
+        
+        // Now we can resolve the promise and send the data
+/*        deferred.resolve(json_data);
+*/      deferred.resolve(json_data);
       })
       // XHR failed for some reason
       .fail(function(xhr, status, error) {

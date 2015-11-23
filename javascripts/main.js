@@ -53,6 +53,12 @@ omdbSearch();
 
     });
 
+    // Autofocus for modal
+/*    $('#findMovies').click(function () {
+  		$('#find').focus();
+	});*/
+
+
     // Enter
     $(document).keyup(function (e) {
         var key = e.which || e.keyCode;

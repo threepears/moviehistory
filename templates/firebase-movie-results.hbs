@@ -1,7 +1,6 @@
 {{#each movies}}
 	<div class="col-md-4">
 		<img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=7c212437" alt={{Title}}>
-		<p>{{Title}}</p>
 		<button class="watch" id="{{@key}}">I Have Watched This</button>
 	</div>
 {{/each}}

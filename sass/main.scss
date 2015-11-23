@@ -9,11 +9,15 @@ body {
 	font-family: Tahoma, Helvetica, sans-serif;
 }
 
+h1 {
+	margin-top: 10%;
+}
+
 .container {
 	width: 80%;
 	margin: 0 auto;
 	text-align: center;
-	margin-top: 10%;
+	margin-top: 5%;
 }
 
 .navbar {
@@ -59,9 +63,29 @@ div.form-group {
 }
 
 .col-md-4 {
-	border-left: 1px solid #000;
-	border-right: 1px solid #000;
+	min-height: 360px;
+	overflow: hidden;
 }
 
+.col-md-4 img {
+	height: 300px;
+	min-width: 200px;
+}
+
+.add,
+.watch {
+	margin-top: 10px;
+}
+
+.noposter {
+	height: 300px;
+	width: 210px;
+	margin: 0 auto;
+	text-align: center;
+	padding: 130px 10px;
+	font-weight: bold;
+	border: 1px solid #000;
+	background-color: #dcdcdc;
+}
 
 
