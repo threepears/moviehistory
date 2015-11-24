@@ -74,6 +74,15 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
     });
 
 
+	$(document).on("click", ".closeButton", function(e)  {
+		console.log("Clicking");
+/*		var artist = $(this).parent().find("li")[0].innerHTML;
+*/		e.target.parentNode.remove();
+
+	});
+
+
+
     logout.click(function() {
     	var ref = new Firebase("https://originalidea.firebaseio.com");
 
