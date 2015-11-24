@@ -54,15 +54,30 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
 // creates object of stored firebase movies
         var firebaseMoviesObject = snapshot.child("movies").val();
 
-
+        console.log("movie.Search.Title", movie.Search[0].Title);
 // we need a way to combine the omdb and firebase results and alphabetize them
 // while still writing the ones without posters to have a title displayed
 
 // converts object to array
         var firebaseMoviesArray = $.map(firebaseMoviesObject, function(el) { return el; });
+        console.log("firebaseMoviesArray", firebaseMoviesArray);
+
+        var filteredArray = _.filter(firebaseMoviesArray, function (obj) {
+          if (_.includes(obj.Title.toLowerCase() === findMovie.toLowerCase())) {
+            return obj;
+          }
+        });
+
+        console.log("firebaseMoviesArray after filter", filteredArray);
+
+
+
         var testArray = [];
+
+//does a non-fuzzy search for Title in object
         for (var j = 0; j < firebaseMoviesArray.length; j++) {
-          if (firebaseMoviesArray[j].Title == findMovie) {
+          // if (firebaseMoviesArray[j].Title == findMovie) {
+            if (firebaseMoviesArray[j].Title === movie.Search[0].Title) {
             testArray.push(firebaseMoviesArray[j]);
           }
         }
