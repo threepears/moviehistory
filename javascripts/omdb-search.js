@@ -19,24 +19,11 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
 
       console.log("movie", movie);
 
-/*      for (var key in movie) {
-        if(users[key].email === authData.password.email){
-          signedInUserProfile = users[key];
-        } else {
-          otherUsers.push(users[key]);
-        }
-      }*/
-
-/*      for (var key in movie) {
-        console.log(movie);
-    
-      }*/
-
+// creates arrays to put movies in that posters and no posters
       var posterList = [];
       var noPosterList = [];
 
-        var count = 0;
-
+// loops over the search results from omdb and pushes movies with no posters into no posters array. likewise with movies with posters
         for (var i = 0; i < movie.Search.length; i++) {
           if (movie.Search[i].Poster !== "N/A") {
             posterList.push(movie.Search[i]);
@@ -48,7 +35,7 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
         console.log("posterList", posterList);
         console.log("noPosterList", noPosterList);
 
-
+// writes each to the page
         require(['hbs!../templates/omdb-movie-results'], function (songTemplate) {
           $("#home-page .row").append(songTemplate({Search:posterList}));
         });
@@ -57,33 +44,7 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
           $("#home-page .row").append(songTemplate({Search:noPosterList}));
         });
 
-
-
-
-
-
-      // for (var i = 0; i < movie.Search.length; i++) {
-      //   if (count > 0) {
-      //     require(['hbs!../templates/omdb-noposter-results'], function (songTemplate) {
-      //     $("#home-page .row").html(songTemplate({Search:movie}));
-      //     });
-      //   } else {
-      //     require(['hbs!../templates/omdb-movie-results'], function (songTemplate) {
-      //     $("#home-page .row").html(songTemplate({Search:movie}));
-      //     });
-      //   }
-      // }
-        
-
-/*        console.log(newList)*/
-
-      console.log(Object.keys(movie));
-
-      // Search:movie creates a "Search" object and puts "movie" inside
-/*      require(['hbs!../templates/omdb-movie-results'], function (songTemplate) {
-        $("#home-page .row").html(songTemplate({Search:movie}));
-      });*/
-
+      // console.log(Object.keys(movie));
 
     });
 

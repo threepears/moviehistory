@@ -1,6 +1,5 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "omdb-title-ajax"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, omdbTitleAjax) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch) {
 
-	
 	// Set variables
 	var email;
 	var password;
@@ -40,14 +39,15 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 			$("#greeting").html("Hello User!");
 			// javascripts/add-movie.js
 			addMovie(uid);
-			firebaseSearch(uid);
+			// firebaseSearch(uid);
+			twoBaseSearch(uid);
 			// return uid;
 		});
 	});
 
 
 	// search omdb with javascripts/omdb-search.js
-	omdbSearch();
+	// omdbSearch();
 
 
 	// Page turning from home screen to main page
