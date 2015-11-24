@@ -63,10 +63,29 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
         console.log("firebaseMoviesArray", firebaseMoviesArray);
 
         var filteredArray = _.filter(firebaseMoviesArray, function (obj) {
-          if (_.includes(obj.Title.toLowerCase() === findMovie.toLowerCase())) {
+          if (_.includes(obj.Title.toLowerCase(), findMovie.toLowerCase())) {
+            console.log("obj includes", obj.Title);
             return obj;
           }
         });
+
+
+
+
+        // var filtered = _.filter(collectionsRef, function(obj) {
+        //   if (_.includes(obj.Title.toLowerCase(), searchVal.toLowerCase())) {
+        //       console.log("obj includes", obj.Title);
+        //       return obj;
+        //   }
+        // });
+
+
+
+
+
+
+
+
 
         console.log("firebaseMoviesArray after filter", filteredArray);
 
@@ -75,20 +94,21 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
         var testArray = [];
 
 //does a non-fuzzy search for Title in object
-        for (var j = 0; j < firebaseMoviesArray.length; j++) {
-          // if (firebaseMoviesArray[j].Title == findMovie) {
-            if (firebaseMoviesArray[j].Title === movie.Search[0].Title) {
-            testArray.push(firebaseMoviesArray[j]);
-          }
-        }
+        // for (var j = 0; j < filteredArray.length; j++) {
+        //   // if (filteredArray[j].Title == findMovie) {
+        //     if (filteredArray[j].Title === movie.Search[0].Title) {
+        //     testArray.push(filteredArray[j]);
+        //   }
+        // }
         console.log("testArray", testArray);
 
-        console.log("inside firebaseMoviesObject", firebaseMoviesObject);
-        console.log("firebaseMoviesArray", firebaseMoviesArray);
+        // console.log("inside firebaseMoviesObject", firebaseMoviesObject);
+        // console.log("firebaseMoviesArray", firebaseMoviesArray);
 
 // combines that array with posterList and noPosterList from above
         // combinedMovies = firebaseMoviesArray.concat(posterList, noPosterList);
-        combinedMovies  = testArray.concat(posterList, noPosterList);
+        // combinedMovies = testArray.concat(posterList, noPosterList);
+        combinedMovies = filteredArray.concat(posterList, noPosterList);
 
         console.log("combinedMovies, since by reference should be same as sorted", combinedMovies);
 
