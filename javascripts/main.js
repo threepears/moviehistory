@@ -1,4 +1,4 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search", "omdb-title-ajax"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch, omdbTitleAjax) {
 
 	// Set variables
 	var email;
@@ -89,7 +89,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		console.log(movieID);
 
 		omdbTitleAjax(movieID).then(function(movieData) {
-			console.log(movieData);
+			console.log("movieData", movieData);
 
 			require(['hbs!../templates/movieInfoModal'], function (movieTemplate) {
           	$(".movieInfo").html(movieTemplate(movieData));
