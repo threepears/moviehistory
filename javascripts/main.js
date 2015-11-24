@@ -60,11 +60,12 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
       $("." + nextPage).show();
     });
 
-
+   
 	// Enter for login button
     $(document).keyup(function (e) {
+    	var test1 = $("#entry-screen").is(":visible");
         var key = e.which || e.keyCode;
-            if (key === 13) {
+            if (key === 13 && test1) {
             login.click();
           }
     });
@@ -72,8 +73,9 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 
     // Enter for search box
     $(document).keyup(function (e) {
+    	var test2 = $(".main-page").is(":visible"); 
         var key = e.which || e.keyCode;
-            if (key === 13) {
+            if (key === 13 && test2) {
             searching.click();
           }
     });
@@ -94,6 +96,28 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
         	});
 		});
 	});
+
+
+	// Click on add button, changes to watched button
+	$(document).on("click", ".add", (function(e) {
+		$(e.target).replaceWith("<button class='watch btn btn-primary' data-toggle='modal' data-target='#starRatingModal'>Watched?</button>").blur();
+		console.log("Button change?");
+	}));
+
+
+	// Click on watched button, changes to star ratings
+/*	$(document).on("click", ".watch", (function(e) {
+		$(e.target).removeClass("watch").addClass("stars").blur();
+		console.log("Button change?");
+	}));*/
+
+
+	// Star rating modal
+	$(':radio').change(
+	  function(){
+	    $('.choice').text( this.value + ' stars!' );
+	  } 
+	);
 
 
     // Remove poster from results on click
