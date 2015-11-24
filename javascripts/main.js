@@ -1,4 +1,4 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch) {
 
 	
 	var email;
@@ -36,7 +36,8 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 			$("#greeting").html("Hello User!");
 // javascripts/add-movie.js
 			addMovie(uid);
-			firebaseSearch(uid);
+			// firebaseSearch(uid);
+			twoBaseSearch(uid);
 			// return uid;
 		});
 
@@ -44,7 +45,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 
 
 	// search omdb with javascripts/omdb-search.js
-	omdbSearch();
+	// omdbSearch();
 
 
     $("#entry-screen").show();

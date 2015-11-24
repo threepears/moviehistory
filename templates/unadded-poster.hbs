@@ -1,6 +1,4 @@
-{{#each movies}}
 	<div class="col-md-3">
 		<img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=7c212437" alt={{Title}}>
-		<button class="watch" id="{{@key}}">Watch</button>
+		<button class="add" imdb="{{imdbID}}">Add</button>
 	</div>
-{{/each}}
