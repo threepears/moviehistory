@@ -1,4 +1,4 @@
-define(["jquery", "omdb-ajax"], function($, omdbAjax) {
+define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
   return function(uid) {
 
 // click find button in Find Movies Modal
@@ -47,6 +47,8 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
       // console.log("ref.movies", ref.movies);
       ref.child(uid).on("value", function(snapshot) {
 
+        $("#home-page .row").html("");
+
 // Store the entire user key in a local variable
 
 // creates object of stored firebase movies
@@ -75,7 +77,7 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
 
         console.log("combinedMovies, since by reference should be same as sorted", combinedMovies);
 
-// sort by Title
+// sort by Title function
         function compare(a,b) {
           if (a.Title < b.Title)
             return -1;
@@ -84,22 +86,26 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
           return 0;
         }
 
-        combinedMovies.sort(compare);
-        console.log("combinedMovies after sort", combinedMovies);
+// filter unique movies from combinedMovies
+        var uniqueMovies = _.uniq(combinedMovies, "imdbID");
+        console.log("uniqueMovies", uniqueMovies);
 
-        // require(['hbs!../templates/unadded-no-poster'], function (unaddedNoPoster) {
-        //   $("#home-page .row").append(unaddedNoPoster({movie: combinedMovies}));
-        // });
+// sorts combinedMovies by Title key
+        var alphaMovies = uniqueMovies.sort(compare);
+        console.log("combinedMovies after sort", alphaMovies);
 
-        for (var k = 0; k < combinedMovies.length; k++) {
-          if (combinedMovies[k].Poster === "N/A") {
-            combinedMovies[k].Poster = false;
-            console.log("poster is false", combinedMovies[k]);
+
+// loops over combined movies and if Poster is "N/A", sets it to false.  it does this so handlebars will recognize it
+        for (var k = 0; k < alphaMovies.length; k++) {
+          if (alphaMovies[k].Poster === "N/A") {
+            alphaMovies[k].Poster = false;
+            console.log("poster is false", alphaMovies[k]);
           }
         }
 
+// prints to DOM. unadded-poster should be changed to be more semantically correct, baby!
         require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
-          $("#home-page .row").append(unaddedPoster({movie: combinedMovies}));
+          $("#home-page .row").append(unaddedPoster({movie: alphaMovies}));
         });
 
 
