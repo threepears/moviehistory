@@ -37,7 +37,6 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
       console.log("posterList", posterList);
       console.log("noPosterList", noPosterList);
 
-
 /////////////////
 
 // snapshot
@@ -49,19 +48,16 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
 
         $("#home-page .row").html("");
 
-// Store the entire user key in a local variable
-
 // creates object of stored firebase movies
         var firebaseMoviesObject = snapshot.child("movies").val();
 
         console.log("movie.Search.Title", movie.Search[0].Title);
-// we need a way to combine the omdb and firebase results and alphabetize them
-// while still writing the ones without posters to have a title displayed
 
 // converts object to array
         var firebaseMoviesArray = $.map(firebaseMoviesObject, function(el) { return el; });
         console.log("firebaseMoviesArray", firebaseMoviesArray);
 
+// filters array of firebase movies based on what has been searched for
         var filteredArray = _.filter(firebaseMoviesArray, function (obj) {
           if (_.includes(obj.Title.toLowerCase(), findMovie.toLowerCase())) {
             console.log("obj includes", obj.Title);
@@ -69,45 +65,13 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
           }
         });
 
-
-
-
-        // var filtered = _.filter(collectionsRef, function(obj) {
-        //   if (_.includes(obj.Title.toLowerCase(), searchVal.toLowerCase())) {
-        //       console.log("obj includes", obj.Title);
-        //       return obj;
-        //   }
-        // });
-
-
-
-
-
-
-
-
-
         console.log("firebaseMoviesArray after filter", filteredArray);
-
-
 
         var testArray = [];
 
-//does a non-fuzzy search for Title in object
-        // for (var j = 0; j < filteredArray.length; j++) {
-        //   // if (filteredArray[j].Title == findMovie) {
-        //     if (filteredArray[j].Title === movie.Search[0].Title) {
-        //     testArray.push(filteredArray[j]);
-        //   }
-        // }
         console.log("testArray", testArray);
 
-        // console.log("inside firebaseMoviesObject", firebaseMoviesObject);
-        // console.log("firebaseMoviesArray", firebaseMoviesArray);
-
-// combines that array with posterList and noPosterList from above
-        // combinedMovies = firebaseMoviesArray.concat(posterList, noPosterList);
-        // combinedMovies = testArray.concat(posterList, noPosterList);
+// concatenates posterList and noPosterList into filteredArray
         combinedMovies = filteredArray.concat(posterList, noPosterList);
 
         console.log("combinedMovies, since by reference should be same as sorted", combinedMovies);
@@ -142,71 +106,7 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
         require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
           $("#home-page .row").append(unaddedPoster({movie: alphaMovies}));
         });
-
-
-        // for (var k = 0; k < combinedMovies.length; k++) {
-        //   if (combinedMovies[k].Poster === "N/A") {
-        //     console.log("combinedMovies[k] no poster", combinedMovies[k]);
-        //     require(['hbs!../templates/unadded-no-poster'], function (unaddedNoPoster) {
-        //       $("#home-page .row").append(unaddedNoPoster(combinedMovies[k]));
-        //     });
-        //   } else if (combinedMovies[k].Poster !== "N/A") {
-        //     console.log("combinedMovies[k] has poster", combinedMovies[k]);
-        //     require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
-        //       $("#home-page .row").append(unaddedPoster(combinedMovies[k]));
-        //     });
-        //   }
-
-
-
-        //   // if (combinedMovies[k].Poster === "N/A") {
-        //   //   require(['hbs!../templates/omdb-movie-results'], function (songTemplate) {
-        //   //     $("#home-page .row").append(songTemplate(combinedMovies[k]));
-        //   //   });
-        //   // }
-        // }
-
-
-// writes to dom
-        // require(['hbs!../templates/omdb-movie-results'], function (songTemplate) {
-        //   $("#home-page .row").html(songTemplate({Search:combinedMovies}));
-        //   combinedMovies = [];
-        //   firebaseMoviesArray = [];
-        // });
       });
-
-
-
-// // currently this also writes the email address that is stored at the same level as the movies.
-// // that could be fixed or changed several ways i'm sure
-//         // require(['hbs!../templates/firebase-movie-results'], function (songTemplate) {
-//         //   // $("#home-page .row").html(songTemplate({movies:userRef}));
-//         //   $("#home-page .row").html(songTemplate(userRef));
-//         // });
-//       });
-
-        // ref.orderByChild("Title").on("value", function(snapshot) {
-        //   console.log(snapshot.val().movies.Title);
-        // });
-
-
-
-
-
-/////////////////
-
-// writes each to the page
-      // require(['hbs!../templates/omdb-movie-results'], function (songTemplate) {
-      //   $("#home-page .row").append(songTemplate({Search:posterList}));
-      // });
-
-
-      // require(['hbs!../templates/omdb-noposter-results'], function (songTemplate) {
-      //   $("#home-page .row").append(songTemplate({Search:noPosterList}));
-      // });
-
-      // console.log(Object.keys(movie));
-
     });
 
 });
