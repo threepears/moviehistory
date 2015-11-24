@@ -87,27 +87,43 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
         combinedMovies.sort(compare);
         console.log("combinedMovies after sort", combinedMovies);
 
+        // require(['hbs!../templates/unadded-no-poster'], function (unaddedNoPoster) {
+        //   $("#home-page .row").append(unaddedNoPoster({movie: combinedMovies}));
+        // });
+
         for (var k = 0; k < combinedMovies.length; k++) {
           if (combinedMovies[k].Poster === "N/A") {
-            console.log("combinedMovies[k] no poster", combinedMovies[k]);
-            require(['hbs!../templates/unadded-no-poster'], function (unaddedNoPoster) {
-              $("#home-page .row").append(unaddedNoPoster(combinedMovies[k]));
-            });
-          } else if (combinedMovies[k].Poster !== "N/A") {
-            console.log("combinedMovies[k] has poster", combinedMovies[k]);
-            require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
-              $("#home-page .row").append(unaddedPoster(combinedMovies[k]));
-            });
+            combinedMovies[k].Poster = false;
+            console.log("poster is false", combinedMovies[k]);
           }
-
-
-
-          // if (combinedMovies[k].Poster === "N/A") {
-          //   require(['hbs!../templates/omdb-movie-results'], function (songTemplate) {
-          //     $("#home-page .row").append(songTemplate(combinedMovies[k]));
-          //   });
-          // }
         }
+
+        require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
+          $("#home-page .row").append(unaddedPoster({movie: combinedMovies}));
+        });
+
+
+        // for (var k = 0; k < combinedMovies.length; k++) {
+        //   if (combinedMovies[k].Poster === "N/A") {
+        //     console.log("combinedMovies[k] no poster", combinedMovies[k]);
+        //     require(['hbs!../templates/unadded-no-poster'], function (unaddedNoPoster) {
+        //       $("#home-page .row").append(unaddedNoPoster(combinedMovies[k]));
+        //     });
+        //   } else if (combinedMovies[k].Poster !== "N/A") {
+        //     console.log("combinedMovies[k] has poster", combinedMovies[k]);
+        //     require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
+        //       $("#home-page .row").append(unaddedPoster(combinedMovies[k]));
+        //     });
+        //   }
+
+
+
+        //   // if (combinedMovies[k].Poster === "N/A") {
+        //   //   require(['hbs!../templates/omdb-movie-results'], function (songTemplate) {
+        //   //     $("#home-page .row").append(songTemplate(combinedMovies[k]));
+        //   //   });
+        //   // }
+        // }
 
 
 // writes to dom

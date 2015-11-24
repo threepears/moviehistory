@@ -1,4 +1,20 @@
+{{#each movie}}
 	<div class="col-md-3">
-		<img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=7c212437" alt={{Title}}>
-		<button class="add" imdb="{{imdbID}}">Add</button>
+	{{#if Poster}}
+			<img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=7c212437" alt={{Title}}>
+		{{else}}
+			<div class="noposter">{{Title}}</div>
+	{{/if}}
+	{{#if added}}
+
+		{{#if watched}}
+			<p>Rating</p>
+			{{else}}
+				<button class="watch" id="{{@key}}">Watch</button>
+		{{/if}}
+
+		{{else}}
+			<button class="add" imdb="{{imdbID}}">Add</button>
+	{{/if}}	
 	</div>
+{{/each}}
