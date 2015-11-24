@@ -1,16 +1,16 @@
 {{#each movie}}
 	<div class="col-md-3">
+		<div class="closeButton">X</div>
 	{{#if Poster}}
 			<img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=7c212437" class="movieCast" alt="{{Title}}" data-toggle="modal" data-target="#movieInfoModal" id="{{imdbID}}">
 		{{else}}
 			<div class="noposter movieCast" data-toggle="modal" data-target="#movieInfoModal" id="{{imdbID}}">{{Title}}</div>
 	{{/if}}
 	{{#if added}}
-			<div class="closeButton">X</div>
 		{{#if watched}}
 			<p>Rating</p>
 			{{else}}
-				<button class="watch" id="{{@key}}">Watch</button>
+				<button class="watch btn btn-primary" data-toggle="modal" data-target="#starRatingModal" id="{{@key}}">Watched?</button>
 		{{/if}}
 
 		{{else}}

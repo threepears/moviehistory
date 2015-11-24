@@ -38,7 +38,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 			console.log("loginPromise then statement", uid);
 			$("#greeting").html("Hello User!");
 			// javascripts/add-movie.js
-			addMovie(uid);
+			/*addMovie(uid);*/
 			// firebaseSearch(uid);
 			twoBaseSearch(uid);
 			// return uid;
@@ -101,7 +101,8 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 	// Click on add button, changes to watched button
 	$(document).on("click", ".add", (function(e) {
 		$(e.target).replaceWith("<button class='watch btn btn-primary' data-toggle='modal' data-target='#starRatingModal'>Watched?</button>").blur();
-		console.log("Button change?");
+		console.log("uid", uid);
+		addMovie(uid);
 	}));
 
 
@@ -135,5 +136,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
     	location.reload();
     });
 
+	// 	});
+	// });
 
 });
