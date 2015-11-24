@@ -1,7 +1,7 @@
 {{#each Search}}
 	<div class="col-md-3">
 		<div class="closeButton">X</div>
-		<img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=7c212437" alt={{Title}}>
+		<img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=7c212437" class="movieCast" alt="{{Title}}" data-toggle="modal" data-target="#movieInfoModal" id="{{imdbID}}">
 		<button class="add" imdb="{{imdbID}}">Add</button>
 	</div>
 {{/each}}

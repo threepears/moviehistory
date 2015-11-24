@@ -17,6 +17,12 @@ h3 {
   color: #fff;
   margin: -40px 0 6%; }
 
+h4 {
+  font-family: 'Roboto', sans-serif;
+  color: #6495ED;
+  text-transform: uppercase;
+  font-size: 2em; }
+
 .container {
   width: 90%;
   margin: 0 auto;
@@ -99,7 +105,9 @@ button {
   margin-right: 15px; }
 
 div.modal-body {
-  background-color: #6495ED; }
+  background-color: #6495ED;
+  color: #fff;
+  font-size: 1.3em; }
 
 div.form-group {
   width: 100%; }
@@ -111,7 +119,8 @@ div.form-group {
 
 .col-md-3 img {
   height: 300px;
-  min-width: 200px; }
+  min-width: 200px;
+  cursor: pointer; }
 
 .add,
 .watch {
@@ -126,7 +135,8 @@ div.form-group {
   padding: 130px 10px;
   font-weight: bold;
   border: 1px solid #000;
-  background-color: #dcdcdc; }
+  background-color: #dcdcdc;
+  cursor: pointer; }
 
 .closeButton {
   border-radius: 50%;

@@ -5,7 +5,7 @@ define(["q", "jquery", "bootstrap", "add-movie-promise"], function(Q, $, addMovi
     console.log("http://www.omdbapi.com/?i=" + imdbID);
 // passes in imdb attribute from add button to get exact movie from omdb
     $.ajax({ url: "http://www.omdbapi.com/?i=" + imdbID + "&type=movie",
-      method: "GET",
+      method: "GET"
       // data: JSON.stringify(title)
     })
       // XHR was successful

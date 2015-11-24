@@ -1,4 +1,4 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "omdb-title-ajax"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, omdbTitleAjax) {
 
 	
 	var email;
@@ -72,6 +72,29 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 /*            omdbSearch();*/
           }
     });
+
+
+    $(document).on("click", ".movieCast", function(e)  {
+		console.log("Movie info modal");		
+		console.log(e.target);
+		var movieID = this.id;
+		console.log(movieID);
+
+		omdbTitleAjax(movieID).then(function(movieData) {
+			console.log(movieData);
+
+			require(['hbs!../templates/movieInfoModal'], function (movieTemplate) {
+          	$(".movieInfo").html(movieTemplate(movieData));
+        });
+	});
+		
+
+
+		
+		// Send info to Handlebars
+		// Populate DOM
+
+	});
 
 
 	$(document).on("click", ".closeButton", function(e)  {

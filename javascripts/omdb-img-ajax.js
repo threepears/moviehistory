@@ -10,7 +10,7 @@ define(["q", "jquery"], function(Q, $) {
       .done(function(json_data) {
         // Now we can resolve the promise and send the data
         deferred.resolve(json_data);
-        console.log("book types json_data", json_data);
+        console.log("movie types json_data", json_data);
       })
       // XHR failed for some reason
       .fail(function(xhr, status, error) {

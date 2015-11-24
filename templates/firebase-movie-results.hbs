@@ -1,7 +1,7 @@
 {{#each movies}}
 	<div class="col-md-3">
 		<div class="closeButton">X</div>
-		<img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=7c212437" alt={{Title}}>
+		<img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=7c212437" alt="{{Title}}" class="movieCast" data-toggle="modal" data-target="#movieInfoModal" id="{{imdbID}}">
 		<button class="watch" id="{{@key}}">I Have Watched This</button>
 	</div>
 {{/each}}
