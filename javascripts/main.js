@@ -1,4 +1,4 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search", "omdb-title-ajax"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch, omdbTitleAjax) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search", "omdb-title-ajax", "filter"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch, omdbTitleAjax, filter) {
 
 	// Set variables
 	var email;
@@ -41,7 +41,8 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 			addMovie(uid);
 			// firebaseSearch(uid);
 			twoBaseSearch(uid);
-			// return uid;
+// get movies from that user's firebase
+			filter(uid);
 		});
 	});
 
