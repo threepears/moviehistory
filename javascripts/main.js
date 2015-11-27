@@ -107,10 +107,10 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 
 
 	// Click on watched button, changes to star ratings
-/*	$(document).on("click", ".watch", (function(e) {
-		$(e.target).removeClass("watch").addClass("stars").blur();
+	$(document).on("click", ".watch", (function(e) {
+		$(e.target).blur();
 		console.log("Button change?");
-	}));*/
+	}));
 
 
 	// Star rating modal
