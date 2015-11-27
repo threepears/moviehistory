@@ -157,6 +157,9 @@ div.form-group {
 .closeButton:hover {
   cursor: pointer; }
 
+.notAdded {
+  padding-top: 28px; }
+
 #starbox {
   text-align: center; }
 
