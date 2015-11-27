@@ -10,6 +10,7 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 
   		console.log("movies from filter, gets info from firebaseGetAjax", movies);
 
+// turns object of objects into array of objects
   		var firebaseMoviesArray = $.map(movies, function(el) { return el; });
   		console.log("firebaseMoviesArray", firebaseMoviesArray);
 
