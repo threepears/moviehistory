@@ -124,13 +124,38 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
     // Remove poster from results on click
 	$(document).on("click", ".closeButton", function(e)  {
 		console.log("Clicking");
+
+		var thing = $(e.target).next().attr("id");
+		var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies");
+		ref.on("value", function(snapshot) {
+		  var userMovie = snapshot.val();
+		  console.log(userMovie);
+		 
+		  for (var key in userMovie) {
+
+		  		console.log(userMovie[key].imdbID);
+		  		console.log(thing);
+		  		console.log(key);
+		  		console.log(userMovie[key]);
+		  		if (userMovie[key].imdbID === thing) {
+		  			var selection = key;
+		  			var secondRef = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies/" + selection);
+		  			secondRef.remove();
+				  	//delete movie  - ref.remove();
+				  	console.log("Removed");	
+		  		}
+		  }
+		}, function (errorObject) {
+		  console.log("The read failed: " + errorObject.code);
+		});
+		
 		e.target.parentNode.remove();
 	});
 
 
 	// Logout user
     logout.click(function() {
-    	var ref = new Firebase("https://originalidea.firebaseio.com");
+    	var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/uid/movies");
 
     	ref.unauth();
     	location.reload();
