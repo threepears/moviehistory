@@ -1,4 +1,4 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search", "omdb-title-ajax"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch, omdbTitleAjax) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search", "omdb-title-ajax", "filter"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch, omdbTitleAjax, filter) {
 
 	// Set variables
 	var email;
@@ -39,9 +39,10 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 			$("#greeting").html("Hello User!");
 			// javascripts/add-movie.js
 			addMovie(uid);
-			// firebaseSearch(uid);
+// get movies from that user's firebase
+			filter(uid);
+
 			twoBaseSearch(uid);
-			// return uid;
 		});
 	});
 
@@ -107,10 +108,10 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 
 
 	// Click on watched button, changes to star ratings
-/*	$(document).on("click", ".watch", (function(e) {
-		$(e.target).removeClass("watch").addClass("stars").blur();
+	$(document).on("click", ".watch", (function(e) {
+		$(e.target).blur();
 		console.log("Button change?");
-	}));*/
+	}));
 
 
 	// Star rating modal
@@ -124,13 +125,38 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
     // Remove poster from results on click
 	$(document).on("click", ".closeButton", function(e)  {
 		console.log("Clicking");
+
+		var thing = $(e.target).next().attr("id");
+		var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies");
+		ref.on("value", function(snapshot) {
+		  var userMovie = snapshot.val();
+		  console.log(userMovie);
+		 
+		  for (var key in userMovie) {
+
+		  		console.log(userMovie[key].imdbID);
+		  		console.log(thing);
+		  		console.log(key);
+		  		console.log(userMovie[key]);
+		  		if (userMovie[key].imdbID === thing) {
+		  			var selection = key;
+		  			var secondRef = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies/" + selection);
+		  			secondRef.remove();
+				  	//delete movie  - ref.remove();
+				  	console.log("Removed");	
+		  		}
+		  }
+		}, function (errorObject) {
+		  console.log("The read failed: " + errorObject.code);
+		});
+		thing = "";
 		e.target.parentNode.remove();
 	});
 
 
 	// Logout user
     logout.click(function() {
-    	var ref = new Firebase("https://originalidea.firebaseio.com");
+    	var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/uid/movies");
 
     	ref.unauth();
     	location.reload();
