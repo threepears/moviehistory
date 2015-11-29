@@ -148,7 +148,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		}, function (errorObject) {
 		  console.log("The read failed: " + errorObject.code);
 		});
-		
+		thing = "";
 		e.target.parentNode.remove();
 	});
 
