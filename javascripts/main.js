@@ -39,10 +39,10 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 			$("#greeting").html("Hello User!");
 			// javascripts/add-movie.js
 			addMovie(uid);
-			// firebaseSearch(uid);
-			twoBaseSearch(uid);
 // get movies from that user's firebase
 			filter(uid);
+
+			twoBaseSearch(uid);
 		});
 	});
 
