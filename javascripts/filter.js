@@ -57,9 +57,9 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 
 
 // initially populates page once you log in
-        require(['hbs!../templates/unadded-poster'], function (handlebars) {
-          $("#home-page .row").html(handlebars({movie: alphaFirebaseMovies}));
-        });
+      require(['hbs!../templates/unadded-poster'], function (handlebars) {
+        $("#home-page .row").html(handlebars({movie: alphaFirebaseMovies}));
+      });
 
 
 // click All button to display all firebase movies

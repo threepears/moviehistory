@@ -46,7 +46,7 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
       // console.log("ref.movies", ref.movies);
       ref.child(uid).on("value", function(snapshot) {
 
-        $("#home-page .row").html("");
+        // $("#home-page .row").html("");
 
 // creates object of stored firebase movies
         var firebaseMoviesObject = snapshot.child("movies").val();
