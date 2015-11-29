@@ -12,8 +12,11 @@ define(["q", "jquery", "firebase"], function(Q, $, firebase) {
         password : password
       }, function(error, authData) {
         if (error) {
+          alert("Incorrect Email or Passowrd, Please try again")
+          
           console.log("Login Failed!", error);
-        } else { deferred.resolve(authData);
+        }
+         else { deferred.resolve(authData);
                   console.log("authData", authData.uid);
          }
     });
