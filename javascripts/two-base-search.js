@@ -19,6 +19,9 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
 // put correctedMovie into javascripts/omdb-ajax.js then returns that promise to handlebars to write the responses
       omdbAjax(correctedMovie).then(function (movie) {
 
+
+        $("#search").val("");
+        $("#home-page .row").html("");
       console.log("movie", movie);
 
 // creates arrays to put movies in that posters and no posters
@@ -106,6 +109,8 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
         require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
           $("#home-page .row").html(unaddedPoster({movie: alphaMovies}));
         });
+
+        findMovie = "";
       });
     });
 
