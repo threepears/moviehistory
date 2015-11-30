@@ -12,7 +12,7 @@
 	{{/if}}
 	{{#if added}}
 		{{#if watched}}
-			<button class="rating-test btn btn-primary">Rating</button>
+			<input id="{{@key}}" title="{{Title}}" class="test" data-min="0" data-max="5" data-step="1" data-show-clear="false" data-show-caption="false" data-size="xs" value="{{rating}}">
 			{{else}}
 				<button class="watch btn btn-primary" data-toggle="modal" data-target="#starRatingModal" id="{{@key}}">Watched?</button>
 		{{/if}}

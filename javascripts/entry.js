@@ -7,21 +7,23 @@ requirejs.config({
     "handlebars": "../lib/bower_components/handlebars/handlebars.min",
     "lodash": "../lib/bower_components/lodash/lodash.min",
     "firebase": "../lib/bower_components/firebase/firebase",
-    "q": "../lib/bower_components/q/q"
+    "q": "../lib/bower_components/q/q",
+    "stars": "../lib/bower_components/bootstrap-star-rating/js/star-rating.min"
   },
   shim: {
   	"bootstrap": {
   		deps: ["jquery"],
-    "firebase": {
-      exports: "Firebase"
-}
-  	}
+      "firebase": {
+        exports: "Firebase",
+      }
+  	},
+    "stars": ["bootstrap"]
   }
 });
 
 require(
-	["bootstrap", "main"],
-	function(bootstrap, main) {
+	["bootstrap", "main", "stars"],
+	function(bootstrap, main, stars) {
 		
 	}
 );

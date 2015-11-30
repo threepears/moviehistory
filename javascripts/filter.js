@@ -1,4 +1,4 @@
-define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax) {
+define(["jquery", "lodash", "firebase-get-ajax", "stars"], function($, _, firebaseGetAjax, stars) {
   return function(uid) {
 
 // promise that gets uid's movies from firebase via log-in
@@ -83,6 +83,7 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 				if (read === false) {
 		      require(['hbs!../templates/unadded-poster'], function (handlebars) {
 		        $("#home-page .row").html(handlebars({movie: initialPop}));
+						$(".test").rating();
 		        read = true;
 		      });
 				}
@@ -91,6 +92,7 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 				$("#allButton").click(function () {
 				  require(['hbs!../templates/unadded-poster'], function (handlebars) {
 				    $("#home-page .row").html(handlebars({movie: alphaFirebaseMovies}));
+						$(".test").rating();
 				  });
 				});
 
@@ -98,6 +100,7 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 				$("#unwatchedButton").click(function () {
 				  require(['hbs!../templates/unadded-poster'], function (handlebars) {
 				    $("#home-page .row").html(handlebars({movie: unwatchedMovies}));
+						$(".test").rating();
 				  });
 				});
 
@@ -105,6 +108,7 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 				$("#watchedButton").click(function () {
 				  require(['hbs!../templates/unadded-poster'], function (handlebars) {
 				    $("#home-page .row").html(handlebars({movie: watchedMovies}));
+						$(".test").rating();
 				  });
 				});
 
@@ -112,9 +116,9 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 				$("#favoritesButton").click(function () {
 				  require(['hbs!../templates/unadded-poster'], function (handlebars) {
 				    $("#home-page .row").html(handlebars({movie: favoriteMovies}));
+						$(".test").rating();
 				  });
 				});
-
 
 
       });
