@@ -1,4 +1,4 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search", "omdb-title-ajax"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch, omdbTitleAjax) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search", "omdb-title-ajax", "add-stars"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch, omdbTitleAjax, addStars) {
 
 	// Set variables
 	var email;
@@ -9,6 +9,14 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 	var searching = $("#searchSubmit");
 	var thisUser = {};
 	var uid;
+	var currentMovie;
+
+	hbsFull.registerHelper('times', function(n, block) {
+	    var accum = '';
+	    for(var i = 0; i < n; ++i)
+	        accum += block.fn(i);
+	    return accum;
+	});
 
 
 	// click on register and grab values from fields and then pass them to registerPromise
@@ -44,10 +52,6 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 			// return uid;
 		});
 	});
-
-
-	// search omdb with javascripts/omdb-search.js
-	// omdbSearch();
 
 
 	// Page turning from home screen to main page
@@ -97,34 +101,38 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		});
 	});
 
-// when this was uncommented out then the first Add click would not register with firebase, but would affect the DOM
-	// Click on add button, changes to watched button
-	// $(document).on("click", ".add", (function(e) {
-	// 	$(e.target).replaceWith("<button class='watch btn btn-primary' data-toggle='modal' data-target='#starRatingModal'>Watched?</button>").blur();
-	// 	console.log("uid", uid);
-	// 	addMovie(uid);
-	// }));
+
+    // Add star ratings to database
+	$('#submitRatings').click(function () {
+		var Stars = $('input[name="rating"]:checked').val();
+		var numberStars = "";
+
+		addStars(currentMovie, Stars, uid);    
+	});
 
 
 	// Click on watched button, changes to star ratings
 	$(document).on("click", ".watch", (function(e) {
-		$(e.target).blur();
-		console.log("Button change?");
-		/*$(e.target).removeClass("watch").addClass("stars").blur();*/
+		var thing = $(this).attr("imdb");
+		console.log("imdb", thing);
+
+		var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies");
+		ref.on("value", function(snapshot) {
+		  var userMovie = snapshot.val();
+		  console.log(userMovie);
+
+		 
+		  for (var key in userMovie) {
+	  		if (userMovie[key].imdbID === thing) {
+	  			currentMovie = key;
+	  			console.log(currentMovie);
+	  			console.log(userMovie[key]);
+	  			console.log(key);
+	  		}
+		  }
+		});
 	}));
 
-
-	$("#starRatingModal").on("hide.bs.modal", function (e) {
-    	$(".watch").blur();
-	});
-
-
-	// Star rating modal
-/*	$(':radio').change(
-	  function(){
-	    $('.choice').text( this.value + ' stars!' );
-	  } 
-	);*/
 
 
     // Remove poster from results on click

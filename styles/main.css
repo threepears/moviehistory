@@ -227,4 +227,12 @@ div.form-group {
 .star-rating i:hover {
   cursor: pointer; }
 
+#starz {
+  padding-top: 15px; }
+
+#starz img {
+  height: 20px;
+  display: inline-block;
+  min-width: auto; }
+
 /*# sourceMappingURL=main.css.map */
