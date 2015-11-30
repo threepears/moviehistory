@@ -1,27 +1,27 @@
-define(["jquery", "firebase", "q", "generalVariables"],
-function ($, firebase, Q, generalVariables) {
+// define(["jquery", "firebase", "q", "generalVariables"],
+// function ($, firebase, Q, generalVariables) {
 
-  return function(){
+//   return function(){
 
-    console.log("populate user movies");
+//     console.log("populate user movies");
 
-    //deferred object for promise
-    var deferred = Q.defer();
+//     //deferred object for promise
+//     var deferred = Q.defer();
     
-        console.log("user object: ", generalVariables.getCurrentUserMovies());
+//         console.log("user object: ", generalVariables.getCurrentUserMovies());
 
 
-      //populate page with user movies
-      require(["hbs!../templates/searchMovies"], function(popusermovies){
-                  $("middle page-turn btn btn-primary btn-lg").html(popusermovies(generalVariables.getCurrentUserMovies()));
+//       //populate page with user movies
+//       require(["hbs!../templates/searchMovies"], function(popusermovies){
+//                   $("middle page-turn btn btn-primary btn-lg").html(popusermovies(generalVariables.getCurrentUserMovies()));
 
-                  deferred.resolve();
-             });
+//                   deferred.resolve();
+//              });
 
-    return deferred.promise;
-  }
+//     return deferred.promise;
+//   }
   
-})
+// })
 
 
 
@@ -30,20 +30,20 @@ function ($, firebase, Q, generalVariables) {
 
 
 
-//when log in submit button is clicked, check user authentication, and if successful, populate page with main.hbs
-      $("body").on("click", "#logInSubmit", function(){
-            loginAuth()
-        .then(function(){
-          console.log("I am HERE!");
-      //after user is logged in, populate page with main.hbs  need to call cbs database to display user specific database info /// 
-        allSearchFunctionality()
+// //when log in submit button is clicked, check user authentication, and if successful, populate page with main.hbs
+//       $("body").on("click", "#logInSubmit", function(){
+//             loginAuth()
+//         .then(function(){
+//           console.log("I am HERE!");
+//       //after user is logged in, populate page with main.hbs  need to call cbs database to display user specific database info /// 
+//         allSearchFunctionality()
 
-        require(["hbs!../templates/main"], function(logInTemplate){
-                  $("#mainContainer").html(logInTemplate()); 
-                });
+//         require(["hbs!../templates/main"], function(logInTemplate){
+//                   $("#mainContainer").html(logInTemplate()); 
+//                 });
 
-        console.log("user object: ", generalVariables.getCurrentUser());
-      });
-      });
+//         console.log("user object: ", generalVariables.getCurrentUser());
+//       });
+//       });
 
 

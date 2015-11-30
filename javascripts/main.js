@@ -31,12 +31,15 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		console.log(email);
 		password = $("#password").val();
 		console.log(password);
+      var nextPage = $(this).attr("next");
 
-		// pass in email and password to loginPromise, then use that authData to get uid to use in firebase
-		loginPromise(email, password).then(function (authData) {
-			uid = authData.uid;
-			console.log("loginPromise then statement", uid);
-			$("#greeting").html("Hello User!");
+    // pass in email and password to loginPromise, then use that authData to get uid to use in firebase
+    loginPromise(email, password).then(function (authData) {
+      uid = authData.uid;
+      console.log("loginPromise then statement", uid);
+      $("#greeting").html("Hello User!");
+      $(".page").hide();
+      $("." + nextPage).show();
 			// javascripts/add-movie.js
 			addMovie(uid);
 // get movies from that user's firebase
@@ -54,7 +57,8 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 	// Page turning from home screen to main page
     $("#entry-screen").show();
     
-    $(".page-turn").click(function(e) {
+    $(".page-turn").click(function() {
+      console.log(".page-turn");
       var nextPage = $(this).attr("next");
 
       $(".page").hide();
