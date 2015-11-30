@@ -7,6 +7,8 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
       $("#home-page .row").html("");
 
       var combinedMovies;
+      var alphaMovies;
+      var read = false;
 
 // findMovie is set to value of input field
       var findMovie = $("#search").val();
@@ -21,7 +23,6 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
 
 
         $("#search").val("");
-        $("#home-page .row").html("");
       console.log("movie", movie);
 
 // creates arrays to put movies in that posters and no posters
@@ -93,7 +94,7 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
         console.log("uniqueMovies", uniqueMovies);
 
 // sorts combinedMovies by Title key
-        var alphaMovies = uniqueMovies.sort(compare);
+        alphaMovies = uniqueMovies.sort(compare);
         console.log("combinedMovies after sort", alphaMovies);
 
 
@@ -105,13 +106,20 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
           }
         }
 
-// prints to DOM. unadded-poster should be changed to be more semantically correct, baby!
-        require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
+// // prints to DOM. unadded-poster should be changed to be more semantically correct, baby!
+//       // if (read === false) {
+//         require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
+//           $("#home-page .row").html(unaddedPoster({movie: alphaMovies}));
+//           // resets movie data we get from omdbAjax. i do this to try to stop the results from writing again. but right now firebase writes when it shouldnt. so i need to fix that
+//         });
+//         // read = true;
+//       // }
+        // return alphaMovies;
+      });
+      
+      require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
           $("#home-page .row").html(unaddedPoster({movie: alphaMovies}));
         });
-
-        findMovie = "";
-      });
     });
 
 });

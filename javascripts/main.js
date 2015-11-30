@@ -1,4 +1,4 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search", "omdb-title-ajax", "add-stars"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch, omdbTitleAjax, addStars) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search", "omdb-title-ajax", "add-stars", "filter"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch, omdbTitleAjax, addStars, filter) {
 
 	// Set variables
 	var email;
@@ -106,6 +106,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		});
 	});
 
+// <<<<<<< HEAD
 
     // Add star ratings to database
 	$('#submitRatings').click(function () {
@@ -114,6 +115,16 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 
 		addStars(currentMovie, Stars, uid);    
 	});
+// =======
+// messing up mike's code
+// when this was uncommented out then the first Add click would not register with firebase, but would affect the DOM
+	// Click on add button, changes to watched button
+	$(document).on("click", ".add", (function(e) {
+		$(e.target).replaceWith("<button class='watch btn btn-primary'>Added</button>").blur();
+		console.log("uid", uid);
+		// addMovie(uid);
+	}));
+// >>>>>>> debugging-amc
 
 
 	// Click on watched button, changes to star ratings
@@ -173,7 +184,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 
 	// Logout user
     logout.click(function() {
-    	var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/uid/movies");
+    	var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/");
 
     	ref.unauth();
     	location.reload();

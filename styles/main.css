@@ -124,7 +124,8 @@ div.form-group {
   cursor: pointer; }
 
 .add,
-.watch {
+.watch,
+.rating-test {
   margin: 10px auto 0;
   display: block;
   transition: 1s; }
