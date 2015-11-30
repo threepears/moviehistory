@@ -9,6 +9,9 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 // 	        $("#home-page .row").html(handlebars({movie: movies}));
 // 	      });
 
+
+			var read = false;
+
   		// snapshot
       // var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies/");
       var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles");
@@ -77,12 +80,12 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 
 	// initially populates page once you log in (i do it here to alphabetize it)
 	// right now i'm testing this if statement
-				// if ($("#home-page .row").val() === "") {
+				if (read === false) {
 		      require(['hbs!../templates/unadded-poster'], function (handlebars) {
 		        $("#home-page .row").html(handlebars({movie: initialPop}));
-		        initialPop = [];
+		        read = true;
 		      });
-				// }
+				}
 
 	// click All button to display all firebase movies
 				$("#allButton").click(function () {

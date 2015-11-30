@@ -98,10 +98,11 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		});
 	});
 
+// messing up mike's code
 // when this was uncommented out then the first Add click would not register with firebase, but would affect the DOM
 	// Click on add button, changes to watched button
 	$(document).on("click", ".add", (function(e) {
-		$(e.target).replaceWith("<button class='watch btn btn-primary' data-toggle='modal' data-target='#starRatingModal'>Watched?</button>").blur();
+		$(e.target).replaceWith("<button class='watch btn btn-primary'>Added</button>").blur();
 		console.log("uid", uid);
 		// addMovie(uid);
 	}));
