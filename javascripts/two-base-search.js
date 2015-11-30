@@ -21,7 +21,6 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
 
 
         $("#search").val("");
-        $("#home-page .row").html("");
       console.log("movie", movie);
 
 // creates arrays to put movies in that posters and no posters
@@ -108,9 +107,9 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
 // prints to DOM. unadded-poster should be changed to be more semantically correct, baby!
         require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
           $("#home-page .row").html(unaddedPoster({movie: alphaMovies}));
+          // resets movie data we get from omdbAjax. i do this to try to stop the results from writing again. but right now firebase writes when it shouldnt. so i need to fix that
+          movie = {};
         });
-
-        findMovie = "";
       });
     });
 
