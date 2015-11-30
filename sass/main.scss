@@ -156,7 +156,8 @@ div.form-group {
 }
 
 .add,
-.watch {
+.watch,
+.rating-test {
 	margin: 10px auto 0;
 	display: block;
 	transition: 1s;
@@ -164,6 +165,11 @@ div.form-group {
 
 .watch {
 	background-color: #8b0000;
+}
+
+.rating-test {
+	background: yellow;
+	color: black;
 }
 
 .noposter {
