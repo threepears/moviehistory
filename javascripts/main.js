@@ -107,18 +107,24 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 
 
 	// Click on watched button, changes to star ratings
-/*	$(document).on("click", ".watch", (function(e) {
-		$(e.target).removeClass("watch").addClass("stars").blur();
+	$(document).on("click", ".watch", (function(e) {
+		$(e.target).blur();
 		console.log("Button change?");
-	}));*/
+		/*$(e.target).removeClass("watch").addClass("stars").blur();*/
+	}));
+
+
+	$("#starRatingModal").on("hide.bs.modal", function (e) {
+    	$(".watch").blur();
+	});
 
 
 	// Star rating modal
-	$(':radio').change(
+/*	$(':radio').change(
 	  function(){
 	    $('.choice').text( this.value + ' stars!' );
 	  } 
-	);
+	);*/
 
 
     // Remove poster from results on click

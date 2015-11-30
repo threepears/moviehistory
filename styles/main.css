@@ -132,6 +132,13 @@ div.form-group {
 .watch {
   background-color: #8b0000; }
 
+.watch:hover,
+.watch:active {
+  background-color: #ff0000; }
+
+.watch.btn-primary:focus {
+  background-color: #8b0000; }
+
 .noposter {
   height: 300px;
   width: 210px;
@@ -161,6 +168,10 @@ div.form-group {
   padding-top: 28px; }
 
 #starbox {
+  text-align: center; }
+
+#starBody,
+#starFooter {
   text-align: center; }
 
 .star-rating {
