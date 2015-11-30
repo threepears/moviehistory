@@ -19,13 +19,9 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		console.log(password);
 
 
-  // register new user. this does not log them in so we'll need to prevent them from continuing
-  // we should also add in an alert or something that says they have been registered and now they can log in
-    registerPromise(email,password).then(function (authData) {
-      $(".page").hide();
-      $("." + nextPage).show();
-    var nextPage = $(this).attr("next");
-    });
+	// register new user. this does not log them in so we'll need to prevent them from continuing
+	// we should also add in an alert or something that says they have been registered and now they can log in
+		registerPromise(email,password);
 	});
 
 
