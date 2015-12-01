@@ -9,6 +9,14 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 // 	        $("#home-page .row").html(handlebars({movie: movies}));
 // 	      });
 
+	// sort by Title function
+	        function compare(a,b) {
+	          if (a.Title < b.Title)
+	            return -1;
+	          if (a.Title > b.Title)
+	            return 1;
+	          return 0;
+	        }
 
 			var read = false;
 
@@ -21,7 +29,12 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 
 // creates object of stored firebase movies
         var firebaseMoviesObject = snapshot.child("movies").val();
+        console.log(firebaseMoviesObject);
 
+          if (firebaseMoviesObject === null) {
+          console.log("firebaseMoviesObject is null", firebaseMoviesObject);
+
+      } else {
 
 	  		var unwatchedMovies =[];
 	  		var watchedMovies = [];
@@ -34,14 +47,6 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 	  		var firebaseMoviesArray = $.map(firebaseMoviesObject, function(el) { return el; });
 	  		console.log("firebaseMoviesArray", firebaseMoviesArray);
 
-	// sort by Title function
-	        function compare(a,b) {
-	          if (a.Title < b.Title)
-	            return -1;
-	          if (a.Title > b.Title)
-	            return 1;
-	          return 0;
-	        }
 
 	// sorts firebase movies by Title key, alphabetizes them
 	        var alphaFirebaseMovies = firebaseMoviesArray.sort(compare);
@@ -116,6 +121,7 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 				});
 
 
+     } 
 
       });
   	});

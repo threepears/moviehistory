@@ -42,6 +42,14 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
       console.log("noPosterList", noPosterList);
 
 /////////////////
+// sort by Title function
+        function compare(a,b) {
+          if (a.Title < b.Title)
+            return -1;
+          if (a.Title > b.Title)
+            return 1;
+          return 0;
+        }
 
 // snapshot
       // var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies/");
@@ -54,6 +62,16 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
 
 // creates object of stored firebase movies
         var firebaseMoviesObject = snapshot.child("movies").val();
+
+        if (firebaseMoviesObject === null) {
+          console.log("firebaseMoviesObject is null");
+          // posterList.concat(noPosterList);
+          console.log("posterList", posterList);
+          require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
+            $("#home-page .row").html(unaddedPoster({movie: posterList}));
+          });
+
+        } else {
 
         console.log("movie.Search.Title", movie.Search[0].Title);
 
@@ -80,14 +98,6 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
 
         console.log("combinedMovies, since by reference should be same as sorted", combinedMovies);
 
-// sort by Title function
-        function compare(a,b) {
-          if (a.Title < b.Title)
-            return -1;
-          if (a.Title > b.Title)
-            return 1;
-          return 0;
-        }
 
 // filter unique movies from combinedMovies
         var uniqueMovies = _.uniq(combinedMovies, "imdbID");
@@ -105,14 +115,15 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
             console.log("poster is false", alphaMovies[k]);
           }
         }
-      });
-      
       require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
           $("#home-page .row").html(unaddedPoster({movie: alphaMovies}));
         });
+}
+      });
+      
     });
-
 });
+
 
   }; //--end return  
 }); //--end define
