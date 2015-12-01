@@ -23,6 +23,16 @@ define(["q", "jquery", "filter"], function(Q, $, filter) {
 		  console.log("The read failed: " + errorObject.code);
 		});
 
+		function compare(a,b) {
+          if (a.Title < b.Title)
+            return -1;
+          if (a.Title > b.Title)
+            return 1;
+          return 0;
+        }
+
+        starFilteredMovies = starFilteredMovies.sort(compare);
+
 	  	require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
           $("#home-page .row").html(unaddedPoster({movie: starFilteredMovies}));
         });

@@ -120,6 +120,7 @@ div.form-group {
   border-radius: 5px;
   border: 1px solid #b2871a;
   padding-top: 2px;
+  margin-top: 2px;
   vertical-align: middle;
   float: right; }
 
@@ -136,7 +137,8 @@ div.form-group {
   min-height: 372px;
   overflow: hidden;
   margin-bottom: 20px;
-  transition: 1s; }
+  transition: 1s;
+  position: relative; }
 
 .col-md-3 img {
   height: 300px;
