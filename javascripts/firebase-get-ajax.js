@@ -4,7 +4,7 @@ define(["q", "jquery"], function(Q, $) {
     var deferred = Q.defer();
 
     console.log("uid", uid);
-    $.ajax({ url: "https://originalidea.firebaseio.com/.json/userprofiles/" + uid +"/movies"})
+    $.ajax({ url: "https://originalidea.firebaseio.com/userprofiles/" + uid +"/movies"})
       // XHR was successful
       .done(function(json_data) {
         // Now we can resolve the promise and send the data
