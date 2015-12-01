@@ -113,7 +113,7 @@ div.form-group {
   width: 100%; }
 
 .col-md-3 {
-  min-height: 360px;
+  min-height: 372px;
   overflow: hidden;
   margin-bottom: 20px;
   transition: 1s; }
@@ -233,7 +233,7 @@ div.form-group {
   padding-bottom: 8px; }
 
 .starz img {
-  height: 20px;
+  height: 17px;
   display: inline-block;
   min-width: auto; }
 
