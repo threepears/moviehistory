@@ -9,7 +9,6 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
   		// snapshot
       // var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies/");
       var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles");
-      console.log("ref", ref);
       // console.log("ref.movies", ref.movies);
       ref.child(uid).on("value", function(snapshot) { 
 
@@ -20,9 +19,6 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 	  		var unwatchedMovies =[];
 	  		var watchedMovies = [];
 	  		var favoriteMovies = [];
-
-	  		console.log("movies from filter, gets info from firebaseGetAjax", movies);
-	  		console.log("movies from filter, but from snapshot", firebaseMoviesObject);
 
 	// turns object of objects into array of objects
 	  		var firebaseMoviesArray = $.map(firebaseMoviesObject, function(el) { return el; });

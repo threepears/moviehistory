@@ -54,8 +54,6 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
 // creates object of stored firebase movies
         var firebaseMoviesObject = snapshot.child("movies").val();
 
-        console.log("movie.Search.Title", movie.Search[0].Title);
-
 // converts object to array
         var firebaseMoviesArray = $.map(firebaseMoviesObject, function(el) { return el; });
         console.log("firebaseMoviesArray", firebaseMoviesArray);
@@ -105,6 +103,7 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
           }
         }
 
+        console.log("alphaMovies", alphaMovies);
 // prints to DOM. unadded-poster should be changed to be more semantically correct, baby!
         require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
           $("#home-page .row").html(unaddedPoster({movie: alphaMovies}));

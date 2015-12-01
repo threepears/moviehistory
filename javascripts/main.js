@@ -28,9 +28,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 	// click on login and grab the values and pass them into loginPromise
 	login.click(function() {
 		email = $("#email").val();
-		console.log(email);
 		password = $("#password").val();
-		console.log(password);
       var nextPage = $(this).attr("next");
 
     // pass in email and password to loginPromise, then use that authData to get uid to use in firebase
@@ -58,7 +56,6 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
     $("#entry-screen").show();
     
     $(".page-turn").click(function() {
-      console.log(".page-turn");
       var nextPage = $(this).attr("next");
 
       $(".page").hide();
@@ -88,13 +85,9 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 
     // Pull poster data on click and activate and populate modal
     $(document).on("click", ".movieCast", function(e)  {
-		console.log("Movie info modal");		
-		console.log(e.target);
 		var movieID = this.id;
-		console.log(movieID);
 
 		omdbTitleAjax(movieID).then(function(movieData) {
-			console.log("movieData", movieData);
 
 			require(['hbs!../templates/movieInfoModal'], function (movieTemplate) {
           	$(".movieInfo").html(movieTemplate(movieData));
@@ -114,7 +107,6 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 	// Click on watched button, changes to star ratings
 	$(document).on("click", ".watch", (function(e) {
 		$(e.target).blur();
-		console.log("Button change?");
 	}));
 
 
@@ -128,26 +120,19 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 
     // Remove poster from results on click
 	$(document).on("click", ".closeButton", function(e)  {
-		console.log("Clicking");
 
 		var thing = $(e.target).next().attr("id");
 		var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies");
 		ref.on("value", function(snapshot) {
 		  var userMovie = snapshot.val();
-		  console.log(userMovie);
 		 
 		  for (var key in userMovie) {
 
-		  		console.log(userMovie[key].imdbID);
-		  		console.log(thing);
-		  		console.log(key);
-		  		console.log(userMovie[key]);
 		  		if (userMovie[key].imdbID === thing) {
 		  			var selection = key;
 		  			var secondRef = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies/" + selection);
 		  			secondRef.remove();
 				  	//delete movie  - ref.remove();
-				  	console.log("Removed");	
 		  		}
 		  }
 		}, function (errorObject) {
