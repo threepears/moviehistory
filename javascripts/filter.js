@@ -4,7 +4,13 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 // promise that gets uid's movies from firebase via log-in
   	firebaseGetAjax(uid).then(function (movies) {
 
+// // initially populates page once you log in (this version is not alphabetized currently, but doesn't rewrite each time the value changes in firebase)
+// 	      require(['hbs!../templates/unadded-poster'], function (handlebars) {
+// 	        $("#home-page .row").html(handlebars({movie: movies}));
+// 	      });
 
+
+			var read = false;
 
   		// snapshot
       // var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies/");
@@ -35,7 +41,9 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 
 	// sorts firebase movies by Title key, alphabetizes them
 	        var alphaFirebaseMovies = firebaseMoviesArray.sort(compare);
+	        var initialPop = alphaFirebaseMovies;
 	        console.log("alphaFirebaseMovies", alphaFirebaseMovies);
+	        console.log("initialPop", initialPop);
 
 	// loops over alphabetized firebase movies and if Poster is "N/A", sets it to false.  it does this so handlebars will recognize it
 	        for (var k = 0; k < alphaFirebaseMovies.length; k++) {
@@ -66,11 +74,14 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 	        console.log("favoriteMovies", favoriteMovies);
 
 
-	// initially populates page once you log in
-	      require(['hbs!../templates/unadded-poster'], function (handlebars) {
-	        $("#home-page .row").html(handlebars({movie: alphaFirebaseMovies}));
-	      });
-
+	// initially populates page once you log in (i do it here to alphabetize it)
+	// right now i'm testing this if statement
+				if (read === false) {
+		      require(['hbs!../templates/unadded-poster'], function (handlebars) {
+		        $("#home-page .row").html(handlebars({movie: initialPop}));
+		        read = true;
+		      });
+				}
 
 	// click All button to display all firebase movies
 				$("#allButton").click(function () {

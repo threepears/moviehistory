@@ -7,6 +7,8 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
       $("#home-page .row").html("");
 
       var combinedMovies;
+      var alphaMovies;
+      var read = false;
 
 // findMovie is set to value of input field
       var findMovie = $("#search").val();
@@ -21,7 +23,6 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
 
 
         $("#search").val("");
-        $("#home-page .row").html("");
       console.log("movie", movie);
 
 // creates arrays to put movies in that posters and no posters
@@ -91,7 +92,7 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
         console.log("uniqueMovies", uniqueMovies);
 
 // sorts combinedMovies by Title key
-        var alphaMovies = uniqueMovies.sort(compare);
+        alphaMovies = uniqueMovies.sort(compare);
         console.log("combinedMovies after sort", alphaMovies);
 
 
@@ -104,13 +105,11 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
         }
 
         console.log("alphaMovies", alphaMovies);
-// prints to DOM. unadded-poster should be changed to be more semantically correct, baby!
-        require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
+      });
+      
+      require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
           $("#home-page .row").html(unaddedPoster({movie: alphaMovies}));
         });
-
-        findMovie = "";
-      });
     });
 
 });

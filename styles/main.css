@@ -113,7 +113,7 @@ div.form-group {
   width: 100%; }
 
 .col-md-3 {
-  min-height: 360px;
+  min-height: 372px;
   overflow: hidden;
   margin-bottom: 20px;
   transition: 1s; }
@@ -124,12 +124,20 @@ div.form-group {
   cursor: pointer; }
 
 .add,
-.watch {
+.watch,
+.rating-test {
   margin: 10px auto 0;
   display: block;
   transition: 1s; }
 
 .watch {
+  background-color: #8b0000; }
+
+.watch:hover,
+.watch:active {
+  background-color: #ff0000; }
+
+.watch.btn-primary:focus {
   background-color: #8b0000; }
 
 .noposter {
@@ -161,6 +169,10 @@ div.form-group {
   padding-top: 28px; }
 
 #starbox {
+  text-align: center; }
+
+#starBody,
+#starFooter {
   text-align: center; }
 
 .star-rating {
@@ -215,6 +227,15 @@ div.form-group {
 
 .star-rating i:hover {
   cursor: pointer; }
+
+.starz {
+  padding-top: 15px;
+  padding-bottom: 8px; }
+
+.starz img {
+  height: 17px;
+  display: inline-block;
+  min-width: auto; }
 
 .flash.error {
   background-color: #BD4F5C; }

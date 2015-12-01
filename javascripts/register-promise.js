@@ -14,14 +14,17 @@ define(["q", "jquery"], function(Q, $) {
         switch (error.code) {
           case "EMAIL_TAKEN":
             console.log("The new user account cannot be created because the email is already in use.");
+            $(".errorId").html("The new user account cannot be created because the email is already in use.");
             deferred.reject(error);
             break;
           case "INVALID_EMAIL":
             console.log("The specified email is not a valid email.");
+            $(".errorId").html("The specified email is not a valid email.");
             deferred.reject(error);
             break;
           default:
             console.log("Error creating user:", error);
+            $(".errorId").html("Error creating user");
             deferred.reject(error);
         }
       } else {
