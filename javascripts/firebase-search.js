@@ -26,6 +26,7 @@ define(["jquery", "omdb-ajax"], function($, omdbAjax) {
 // that could be fixed or changed several ways i'm sure
         require(['hbs!../templates/firebase-movie-results'], function (songTemplate) {
           // $("#home-page .row").html(songTemplate({movies:userRef}));
+          console.log("userRef", userRef);
           $("#home-page .row").html(songTemplate(userRef));
         });
       });
