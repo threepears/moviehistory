@@ -29,6 +29,13 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
       var posterList = [];
       var noPosterList = [];
 
+      for (var z =0; z < movie.Search.length; z++) {
+        if (movie.Search[z].disabled) {
+          movie.Search.splice(z, 1);
+        }
+      }
+
+
 // loops over the search results from omdb and pushes movies with no posters into no posters array. likewise with movies with posters
       for (var i = 0; i < movie.Search.length; i++) {
         if (movie.Search[i].Poster !== "N/A") {
@@ -118,6 +125,14 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
   // sorts combinedMovies by Title key
           alphaMovies = uniqueMovies.sort(compare);
           console.log("combinedMovies after sort", alphaMovies);
+
+
+          for (var y =0; y < alphaMovies.length; y++) {
+            if (alphaMovies[y].disabled) {
+              alphaMovies.splice(y, 1);
+            }
+          }
+
 
 
   // loops over combined movies and if Poster is "N/A", sets it to false.  it does this so handlebars will recognize it

@@ -186,7 +186,8 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		  		if (userMovie[key].imdbID === thing) {
 		  			var selection = key;
 		  			var secondRef = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies/" + selection);
-		  			secondRef.remove();
+		  			// secondRef.remove();
+		  			secondRef.update({disabled: true});
 				  	//delete movie  - ref.remove();
 				  	console.log("Removed");	
 		  		}
