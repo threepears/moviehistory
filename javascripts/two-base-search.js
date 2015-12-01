@@ -42,6 +42,14 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
       console.log("noPosterList", noPosterList);
 
 /////////////////
+// sort by Title function
+        function compare(a,b) {
+          if (a.Title < b.Title)
+            return -1;
+          if (a.Title > b.Title)
+            return 1;
+          return 0;
+        }
 
 // snapshot
       // var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies/");
@@ -55,64 +63,79 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
 // creates object of stored firebase movies
         var firebaseMoviesObject = snapshot.child("movies").val();
 
-        console.log("movie.Search.Title", movie.Search[0].Title);
+// this if statement is for a new user
+        if (firebaseMoviesObject === null) {
+          console.log("firebaseMoviesObject is null");
+          // posterList.concat(noPosterList);
+          combinedMovies = posterList.concat(noPosterList);
+          alphaMovies = combinedMovies.sort(compare);
 
-// converts object to array
-        var firebaseMoviesArray = $.map(firebaseMoviesObject, function(el) { return el; });
-        console.log("firebaseMoviesArray", firebaseMoviesArray);
-
-// filters array of firebase movies based on what has been searched for
-        var filteredArray = _.filter(firebaseMoviesArray, function (obj) {
-          if (_.includes(obj.Title.toLowerCase(), findMovie.toLowerCase())) {
-            console.log("obj includes", obj.Title);
-            return obj;
+            // loops over combined movies and if Poster is "N/A", sets it to false.  it does this so handlebars will recognize it
+          for (var m = 0; m < alphaMovies.length; m++) {
+            if (alphaMovies[m].Poster === "N/A") {
+              alphaMovies[m].Poster = false;
+              console.log("poster is false", alphaMovies[m]);
+            }
           }
-        });
 
-        console.log("firebaseMoviesArray after filter", filteredArray);
+          console.log("posterList", posterList);
+          require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
+            $("#home-page .row").html(unaddedPoster({movie: alphaMovies}));
+          });
 
-        var testArray = [];
+        } else {
 
-        console.log("testArray", testArray);
+          console.log("movie.Search.Title", movie.Search[0].Title);
 
-// concatenates posterList and noPosterList into filteredArray
-        combinedMovies = filteredArray.concat(posterList, noPosterList);
+  // converts object to array
+          var firebaseMoviesArray = $.map(firebaseMoviesObject, function(el) { return el; });
+          console.log("firebaseMoviesArray", firebaseMoviesArray);
 
-        console.log("combinedMovies, since by reference should be same as sorted", combinedMovies);
+  // filters array of firebase movies based on what has been searched for
+          var filteredArray = _.filter(firebaseMoviesArray, function (obj) {
+            if (_.includes(obj.Title.toLowerCase(), findMovie.toLowerCase())) {
+              console.log("obj includes", obj.Title);
+              return obj;
+            }
+          });
 
-// sort by Title function
-        function compare(a,b) {
-          if (a.Title < b.Title)
-            return -1;
-          if (a.Title > b.Title)
-            return 1;
-          return 0;
-        }
+          console.log("firebaseMoviesArray after filter", filteredArray);
 
-// filter unique movies from combinedMovies
-        var uniqueMovies = _.uniq(combinedMovies, "imdbID");
-        console.log("uniqueMovies", uniqueMovies);
+          var testArray = [];
 
-// sorts combinedMovies by Title key
-        alphaMovies = uniqueMovies.sort(compare);
-        console.log("combinedMovies after sort", alphaMovies);
+          console.log("testArray", testArray);
+
+  // concatenates posterList and noPosterList into filteredArray
+          combinedMovies = filteredArray.concat(posterList, noPosterList);
+
+          console.log("combinedMovies, since by reference should be same as sorted", combinedMovies);
 
 
-// loops over combined movies and if Poster is "N/A", sets it to false.  it does this so handlebars will recognize it
-        for (var k = 0; k < alphaMovies.length; k++) {
-          if (alphaMovies[k].Poster === "N/A") {
-            alphaMovies[k].Poster = false;
-            console.log("poster is false", alphaMovies[k]);
+  // filter unique movies from combinedMovies
+          var uniqueMovies = _.uniq(combinedMovies, "imdbID");
+          console.log("uniqueMovies", uniqueMovies);
+
+  // sorts combinedMovies by Title key
+          alphaMovies = uniqueMovies.sort(compare);
+          console.log("combinedMovies after sort", alphaMovies);
+
+
+  // loops over combined movies and if Poster is "N/A", sets it to false.  it does this so handlebars will recognize it
+          for (var k = 0; k < alphaMovies.length; k++) {
+            if (alphaMovies[k].Poster === "N/A") {
+              alphaMovies[k].Poster = false;
+              console.log("poster is false", alphaMovies[k]);
+            }
           }
+        require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
+            $("#home-page .row").html(unaddedPoster({movie: alphaMovies}));
+          });
         }
       });
       
-      require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
-          $("#home-page .row").html(unaddedPoster({movie: alphaMovies}));
-        });
     });
-
 });
+
 
   }; //--end return  
 }); //--end define
