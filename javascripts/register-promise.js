@@ -34,8 +34,6 @@ define(["q", "jquery"], function(Q, $) {
           email: email
         });
         deferred.resolve(userData);
-        deferred.resolve(authData);
-
       }
     });
 

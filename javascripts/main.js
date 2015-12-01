@@ -31,8 +31,17 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 	// register new user. this does not log them in so we'll need to prevent them from continuing
 	// we should also add in an alert or something that says they have been registered and now they can log in
 		registerPromise(email,password).then(function (authData) {
-			$(".page").hide();
+      uid = authData.uid;
+      console.log("loginPromise then statement", uid);
+      $("#greeting").html("Hello User!");
+      $(".page").hide();
       $("." + nextPage).show();
+      // javascripts/add-movie.js
+      addMovie(uid);
+// get movies from that user's firebase
+      filter(uid);
+
+      twoBaseSearch(uid);
 		});
 	});
 
