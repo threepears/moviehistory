@@ -38,13 +38,14 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
       $("." + nextPage).show();
 
 		// javascripts/add-movie.js
-			addMovie(uid);
-	// get movies from that user's firebase
-			filter(uid);
+		addMovie(uid);
 
-			twoBaseSearch(uid);
+		// get movies from that user's firebase
+		filter(uid);
 
-			$("#ex17a").slider({min  : 0, max  : 10, value: 0, tooltip_position:'bottom'});
+		twoBaseSearch(uid);
+
+		$("#ex17a").slider({min  : 0, max  : 10, value: 0, tooltip_position:'bottom'});
 		});
 	});
 
@@ -64,14 +65,16 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
       $("#greeting").html("Hello User!");
       $(".page").hide();
       $("." + nextPage).show();
-			// javascripts/add-movie.js
-			addMovie(uid);
-// get movies from that user's firebase
-			filter(uid);
+			
+		// javascripts/add-movie.js
+		addMovie(uid);
 
-			twoBaseSearch(uid);
+		// get movies from that user's firebase
+		filter(uid);
 
-			$("#ex17a").slider({min  : 0, max  : 10, value: 0, tooltip_position:'bottom'});
+		twoBaseSearch(uid);
+
+		$("#ex17a").slider({min  : 0, max  : 10, value: 0, tooltip_position:'bottom'});
 		});
 	});
 
