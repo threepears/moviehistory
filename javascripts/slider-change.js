@@ -5,8 +5,9 @@ define(["q", "jquery", "filter"], function(Q, $, filter) {
 		var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies");
 		ref.on("value", function(snapshot) {
 			var userMovie = snapshot.val();
-			console.log(userMovie);
+			console.log("sliderChange", userMovie);
 			 
+
 		  	for (var key in userMovie) {
 		  		console.log(userMovie[key].rating);
 		  		console.log(key);
@@ -15,7 +16,7 @@ define(["q", "jquery", "filter"], function(Q, $, filter) {
 		  			filter(uid);
 		  			break;
 		  		}
-		  		else if (userMovie[key].rating === value) {
+		  		else if (userMovie[key].rating === value && userMovie[key].disabled !== true) {
 		  			starFilteredMovies.push(userMovie[key]);
 		  		}
 		  	}
