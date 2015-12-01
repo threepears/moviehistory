@@ -1,6 +1,6 @@
 {{#each movies}}
 	<div class="col-md-3">
-		<div class="closeButton">X</div>
+		<div class="closeButton">&times;</div>
 		<img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=7c212437" alt="{{Title}}" class="movieCast" data-toggle="modal" data-target="#movieInfoModal" id="{{imdbID}}">
 		<button class="watch btn btn-primary" id="{{@key}}">I Have Watched This</button>
 	</div>

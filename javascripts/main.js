@@ -77,85 +77,85 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
     // });
 
    
-	// Enter for login button
-    $(document).keyup(function (e) {
-    	var test1 = $("#entry-screen").is(":visible");
-        var key = e.which || e.keyCode;
-            if (key === 13 && test1) {
-            login.click();
-          }
-    });
+  	// Enter for login button
+      $(document).keyup(function (e) {
+      	var test1 = $("#entry-screen").is(":visible");
+          var key = e.which || e.keyCode;
+              if (key === 13 && test1) {
+              login.click();
+            }
+      });
 
 
-    // Enter for search box
-    $(document).keyup(function (e) {
-    	var test2 = $(".main-page").is(":visible"); 
-        var key = e.which || e.keyCode;
-            if (key === 13 && test2) {
-            searching.click();
-          }
-    });
+      // Enter for search box
+      $(document).keyup(function (e) {
+      	var test2 = $(".main-page").is(":visible"); 
+          var key = e.which || e.keyCode;
+              if (key === 13 && test2) {
+              searching.click();
+            }
+      });
 
 
-    // Pull poster data on click and activate and populate modal
-    $(document).on("click", ".movieCast", function(e)  {
-		var movieID = this.id;
+      // Pull poster data on click and activate and populate modal
+      $(document).on("click", ".movieCast", function(e)  {
+  		var movieID = this.id;
 
-		omdbTitleAjax(movieID).then(function(movieData) {
+  		omdbTitleAjax(movieID).then(function(movieData) {
 
-			require(['hbs!../templates/movieInfoModal'], function (movieTemplate) {
-          	$(".movieInfo").html(movieTemplate(movieData));
-        	});
-		});
-	});
-
-
-
-    // Add star ratings to database
-	$('#submitRatings').click(function () {
-		var Stars = $('input[name="rating"]:checked').val();
-		var numberStars = "";
-
-		addStars(currentMovie, Stars, uid);    
-	});
-
-// messing up mike's code
-// when this was uncommented out then the first Add click would not register with firebase, but would affect the DOM
-	// Click on add button, changes to watched button
-	$(document).on("click", ".add", (function(e) {
-		$(e.target).replaceWith("<button class='watch btn btn-primary'>Added</button>").blur();
-		console.log("uid", uid);
-		// addMovie(uid);
-	}));
+  			require(['hbs!../templates/movieInfoModal'], function (movieTemplate) {
+            	$(".movieInfo").html(movieTemplate(movieData));
+          	});
+  		});
+  	});
 
 
 
-	// Click on watched button, changes to star ratings
-	$(document).on("click", ".watch", (function(e) {
+      // Add star ratings to database
+  	$('#submitRatings').click(function () {
+  		var Stars = $('input[name="rating"]:checked').val();
+  		var numberStars = "";
 
-		$(e.target).blur();
-	}));
+  		addStars(currentMovie, Stars, uid);    
+  	});
 
-		var thing = $(this).attr("imdb");
-		console.log("imdb", thing);
+  // messing up mike's code
+  // when this was uncommented out then the first Add click would not register with firebase, but would affect the DOM
+  	// Click on add button, changes to watched button
+  	$(document).on("click", ".add", (function(e) {
+  		$(e.target).replaceWith("<button class='watch btn btn-primary'>Added</button>").blur();
+  		console.log("uid", uid);
+  		// addMovie(uid);
+  	}));
 
 
-		var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies");
-		ref.on("value", function(snapshot) {
-		  var userMovie = snapshot.val();
-		  console.log(userMovie);
 
-		 
-		  for (var key in userMovie) {
-	  		if (userMovie[key].imdbID === thing) {
-	  			currentMovie = key;
-	  			console.log(currentMovie);
-	  			console.log(userMovie[key]);
-	  			console.log(key);
-	  		}
-		  }
-		});
-	}));
+  	// Click on watched button, changes to star ratings
+  	$(document).on("click", ".watch", (function(e) {
+
+  		$(e.target).blur();
+  	}));
+
+  		var thing = $(this).attr("imdb");
+  		console.log("imdb", thing);
+
+
+  		var ref = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies");
+  		ref.on("value", function(snapshot) {
+  		  var userMovie = snapshot.val();
+  		  console.log(userMovie);
+
+  		 
+  		  for (var key in userMovie) {
+  	  		if (userMovie[key].imdbID === thing) {
+  	  			currentMovie = key;
+  	  			console.log(currentMovie);
+  	  			console.log(userMovie[key]);
+  	  			console.log(key);
+  	  		}
+  		  }
+  		});
+	}); // Closes page turn
 
 
     // Remove poster from results on click
