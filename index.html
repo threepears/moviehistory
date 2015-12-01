@@ -6,6 +6,7 @@
 	  <title>Movie History</title>
 
 	  <link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+	  <link href="./lib/bower_components/seiyria-bootstrap-slider/css/bootstrap-slider.css" rel="stylesheet">
 	  <link rel="stylesheet" type="text/css" href="styles/main.css">
 	  <link href='https://fonts.googleapis.com/css?family=Roboto:900' rel='stylesheet' type='text/css'>
 	</head>
@@ -99,6 +100,11 @@
 						  <input type="radio" name="rating" value="3"><i></i>
 						  <input type="radio" name="rating" value="4"><i></i>
 						  <input type="radio" name="rating" value="5"><i></i>
+						  <input type="radio" name="rating" value="6"><i></i>
+						  <input type="radio" name="rating" value="7"><i></i>
+						  <input type="radio" name="rating" value="8"><i></i>
+						  <input type="radio" name="rating" value="9"><i></i>
+						  <input type="radio" name="rating" value="10"><i></i>
 						</span>
 						<!-- <strong class="choice"></strong> -->
 					</div>
@@ -117,11 +123,14 @@
 					<div id="topchoices">
 						<h3>YOUR MOVIES</h3>  
 						<div class="btn-group" role="group" aria-label="...">
-						  <button type="button" class="btn btn-primary" id="allButton">All</button>
-						  <button type="button" class="btn btn-primary" id="unwatchedButton">Unwatched</button>
-						  <button type="button" class="btn btn-primary" id="watchedButton">Watched</button>
-						  <button type="button" class="btn btn-primary" id="favoritesButton">Favorites</button>
+						  	<button type="button" class="btn btn-primary" id="allButton">All</button>
+						  	<button type="button" class="btn btn-primary" id="unwatchedButton">Unwatched</button>
+						  	<button type="button" class="btn btn-primary" id="watchedButton">Watched</button>
 						</div>
+						<div id="sliderContainer">
+					      	<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					      	<input id="ex17a" type="text"/>
+					    </div>
 					</div>
 
 				    <div class="row">

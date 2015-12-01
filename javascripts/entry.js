@@ -7,7 +7,8 @@ requirejs.config({
     "handlebars": "../lib/bower_components/handlebars/handlebars.min",
     "lodash": "../lib/bower_components/lodash/lodash.min",
     "firebase": "../lib/bower_components/firebase/firebase",
-    "q": "../lib/bower_components/q/q"
+    "q": "../lib/bower_components/q/q",
+    "bootstrap-slider": "../lib/bower_components/seiyria-bootstrap-slider/js/bootstrap-slider"
   },
   shim: {
   	"bootstrap": {

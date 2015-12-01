@@ -1,4 +1,4 @@
-define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search", "omdb-title-ajax", "add-stars", "filter"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch, omdbTitleAjax, addStars, filter) {
+define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promise", "login-promise", "omdb-search", "add-movie", "firebase-search", "two-base-search", "omdb-title-ajax", "add-stars", "filter", "bootstrap-slider", "slider-change"], function($, handlebars, _, firebase, hbsFull, registerPromise, loginPromise, omdbSearch, addMovie, firebaseSearch, twoBaseSearch, omdbTitleAjax, addStars, filter, bootstrapSlider, sliderChange) {
 
 	// Set variables
 	var email;
@@ -33,6 +33,8 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		registerPromise(email,password).then(function (authData) {
 			$(".page").hide();
       $("." + nextPage).show();
+
+      	$("#ex17a").slider({min  : 0, max  : 10, value: 0, tooltip_position:'bottom'});
 		});
 	});
 
@@ -58,6 +60,8 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 			filter(uid);
 
 			twoBaseSearch(uid);
+
+			$("#ex17a").slider({min  : 0, max  : 10, value: 0, tooltip_position:'bottom'});
 		});
 	});
 
@@ -183,6 +187,22 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		});
 		thing = "";
 		e.target.parentNode.remove();
+	});
+
+
+	// Slider functionality
+	$("#ex17a").on("change", function(event) {
+		var starFilteredMovies = [];
+
+		// Instantiate a slider
+		var mySlider = $("input#ex17a").slider();
+
+		// Call a method on the slider
+		var value = mySlider.slider('getValue');
+		console.log(value);
+
+		sliderChange(value, uid, starFilteredMovies);
+		
 	});
 
 
