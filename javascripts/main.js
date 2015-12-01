@@ -43,6 +43,8 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 			filter(uid);
 
 			twoBaseSearch(uid);
+
+			$("#ex17a").slider({min  : 0, max  : 10, value: 0, tooltip_position:'bottom'});
 		});
 	});
 
