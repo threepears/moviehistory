@@ -63,12 +63,24 @@ define(["jquery", "lodash", "omdb-ajax"], function($, _, omdbAjax) {
 // creates object of stored firebase movies
         var firebaseMoviesObject = snapshot.child("movies").val();
 
+// this if statement is for a new user
         if (firebaseMoviesObject === null) {
           console.log("firebaseMoviesObject is null");
           // posterList.concat(noPosterList);
+          combinedMovies = posterList.concat(noPosterList);
+          alphaMovies = combinedMovies.sort(compare);
+
+            // loops over combined movies and if Poster is "N/A", sets it to false.  it does this so handlebars will recognize it
+          for (var m = 0; m < alphaMovies.length; m++) {
+            if (alphaMovies[m].Poster === "N/A") {
+              alphaMovies[m].Poster = false;
+              console.log("poster is false", alphaMovies[m]);
+            }
+          }
+
           console.log("posterList", posterList);
           require(['hbs!../templates/unadded-poster'], function (unaddedPoster) {
-            $("#home-page .row").html(unaddedPoster({movie: posterList}));
+            $("#home-page .row").html(unaddedPoster({movie: alphaMovies}));
           });
 
         } else {
