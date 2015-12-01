@@ -36,8 +36,8 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
           if (firebaseMoviesObject === null) {
           console.log("firebaseMoviesObject is null");
           // posterList.concat(noPosterList);
-          combinedMovies = posterList.concat(noPosterList);
-          alphaMovies = combinedMovies.sort(compare);
+          var combinedMovies = posterList.concat(noPosterList);
+          var alphaMovies = combinedMovies.sort(compare);
 
             // loops over combined movies and if Poster is "N/A", sets it to false.  it does this so handlebars will recognize it
           for (var m = 0; m < alphaMovies.length; m++) {
@@ -71,6 +71,14 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 		        var initialPop = alphaFirebaseMovies;
 		        console.log("alphaFirebaseMovies", alphaFirebaseMovies);
 		        console.log("initialPop", initialPop);
+
+
+
+		        for (var z = 0; z < alphaFirebaseMovies.length; z++) {
+			        if (alphaFirebaseMovies[z].disabled) {
+			          alphaFirebaseMovies.splice(z, 1);
+			        }
+			      }
 
 		// loops over alphabetized firebase movies and if Poster is "N/A", sets it to false.  it does this so handlebars will recognize it
 		        for (var k = 0; k < alphaFirebaseMovies.length; k++) {

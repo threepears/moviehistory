@@ -43,6 +43,8 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 			filter(uid);
 
 			twoBaseSearch(uid);
+	// load javascript for slider
+			$("#ex17a").slider({min  : 0, max  : 10, value: 0, tooltip_position:'bottom'});
 		});
 	});
 
@@ -68,7 +70,7 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 			filter(uid);
 
 			twoBaseSearch(uid);
-
+			// load javascript for slider
 			$("#ex17a").slider({min  : 0, max  : 10, value: 0, tooltip_position:'bottom'});
 		});
 	});
@@ -181,7 +183,8 @@ define(["jquery", "hbs", "lodash", "firebase", "hbs/handlebars", "register-promi
 		  		if (userMovie[key].imdbID === thing) {
 		  			var selection = key;
 		  			var secondRef = new Firebase("https://originalidea.firebaseio.com/userprofiles/" + uid + "/movies/" + selection);
-		  			secondRef.remove();
+		  			// secondRef.remove();
+		  			secondRef.update({disabled: true});
 				  	//delete movie  - ref.remove();
 				  	console.log("Removed");	
 		  		}
