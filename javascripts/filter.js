@@ -65,6 +65,11 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 		  		var firebaseMoviesArray = $.map(firebaseMoviesObject, function(el) { return el; });
 		  		console.log("firebaseMoviesArray", firebaseMoviesArray);
 
+   					for (var z = 0; z < firebaseMoviesArray.length; z++) {
+			        if (firebaseMoviesArray[z].disabled) {
+			          firebaseMoviesArray.splice(z, 1);
+			        }
+			      }
 
 		// sorts firebase movies by Title key, alphabetizes them
 		        var alphaFirebaseMovies = firebaseMoviesArray.sort(compare);
@@ -72,13 +77,17 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 		        console.log("alphaFirebaseMovies", alphaFirebaseMovies);
 		        console.log("initialPop", initialPop);
 
+						// console.log("alphaFirebaseMovies before splice", alphaFirebaseMovies);
 
+						
 
-		        for (var z = 0; z < alphaFirebaseMovies.length; z++) {
-			        if (alphaFirebaseMovies[z].disabled) {
-			          alphaFirebaseMovies.splice(z, 1);
-			        }
-			      }
+		    //     for (var z = 0; z < alphaFirebaseMovies.length; z++) {
+			   //      if (alphaFirebaseMovies[z].disabled) {
+			   //        alphaFirebaseMovies.splice(z, 1);
+			   //      }
+			   //    }
+
+			   //    console.log("alphaFirebaseMovies after splice", alphaFirebaseMovies);
 
 		// loops over alphabetized firebase movies and if Poster is "N/A", sets it to false.  it does this so handlebars will recognize it
 		        for (var k = 0; k < alphaFirebaseMovies.length; k++) {
@@ -113,7 +122,7 @@ define(["jquery", "lodash", "firebase-get-ajax"], function($, _, firebaseGetAjax
 		// right now i'm testing this if statement
 					if (read === false) {
 			      require(['hbs!../templates/unadded-poster'], function (handlebars) {
-			        $("#home-page .row").html(handlebars({movie: initialPop}));
+			        $("#home-page .row").html(handlebars({movie: alphaFirebaseMovies}));
 			        read = true;
 			      });
 					}
